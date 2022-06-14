@@ -11,7 +11,7 @@ def callRegister(request):
     pass
     global user,email,s,em,pwd 
     if request.method == 'POST':
-        m = sql.connector(host='localhost',user='root',passwd='',database='usuarios')
+        m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
         cursor = m.cursor()
         d= request.POST
         for key,value in d.items():
@@ -22,7 +22,7 @@ def callRegister(request):
             if key == 'password':
                 password = value
                 
-        c = f"CALL `spInsertUser`('{user}', '{email}', '{password}');"
+        c = f"CALL `spInsertUser`('{email}', '{user}', '{password}');"
         cursor.execute(c)
         m.commit()
         
