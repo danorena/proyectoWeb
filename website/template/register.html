@@ -1,88 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Registro Usuarios</title>
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="{% static 'register/css/nunito-font.css' %}">
-	<!-- Main Style Css -->
-	
-	<!-- Lo del header -->
-	<!-- Our CSS stylesheet file -->
-	<link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+	<head>
+		<meta charset="utf-8">
+		<title>Registro Usuarios</title>
+		<!-- Mobile Specific Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- Font-->
+		<link rel="stylesheet" type="text/css" href="{% static 'register/css/nunito-font.css' %}">
+		<!-- Main Style Css -->
+		
+		<!-- Lo del header -->
+		<!-- Our CSS stylesheet file -->
+		<link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
 
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
-	<!-- Estilo del registro -->
-	<link rel="stylesheet" href="{% static 'register/css/style.css' %}"/>
-    
-	
+		<!-- Font Awesome Stylesheet -->
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
+		<!-- Estilo del registro -->
+		<link rel="stylesheet" href="{% static 'register/css/style.css' %}"/>
+		
+		
 
-</head>
-<body class="form-v9">
-	<header>
-		<nav id="colorNav">
-			<ul>
-				<li class="green">
-					<a href="#" class="icon-home"></a>
-					<ul>
-						<li><a href="#">Ir al inicio</a></li>
-					</ul>
-				</li>
-				<li class="blue">
-					<a href="#" class="icon-user"></a>
-					<ul>
-						<li><a href="#">Crear Usuario</a></li>
-						<li><a href="#">Eliminar Usuario</a></li>
-					</ul>
-				</li>
-				<li class="yellow">
-					<a href="#" class="icon-book"></a>
-					<ul>
-						<li><a href="#">Ver asistencia</a></li>
-					</ul>
-				</li>
-				
-				<li class="red">
-					<a href="#" class="icon-cogs"></a>
-					<ul>
-						<li><a href="#">Cerrar Sesion</a></li>
-						<li><a href="#">Configuracion de la cuenta</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<div class="page-content">
-		<div class="form-v9-content">
-			<form class="form-detail" action="#" method="post">
-				{% csrf_token %}
-				<h2>Registro de Usuarios</h2>
-				<div class="form-row-total">
-					<div class="form-row">
-						<!-- EDITADO, CAMBIE EL NAME E ID POR USER, tenia era name -->
-						<input type="text" name="user" id="user" class="input-text" placeholder="Usuario" required>
+	</head>
+	<body class="form-v9">
+		<header>
+			<nav id="colorNav">
+				<ul>
+					<li class="green">
+						<a class="icon-home"></a>
+						<ul>
+							<li><a href="/index">Ir al inicio</a></li>
+						</ul>
+					</li>
+					<li class="blue">
+						<a class="icon-user"></a>
+						<ul>
+							<li><a href="/registro">Registrar Usuario</a></li>
+							<li><a href="#">Eliminar Usuario</a></li>
+						</ul>
+					</li>
+					<li class="yellow">
+						<a class="icon-book"></a>
+						<ul>
+							<li><a href="#">Ver asistencia</a></li>
+						</ul>
+					</li>
+					
+					<li class="red">
+						<a class="icon-cogs"></a>
+						<ul>
+							<li><a href="#">Cerrar Sesion</a></li>
+							<li><a href="#">Configuracion de la cuenta</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="page-content">
+			<div class="form-v9-content">
+				<form class="form-detail" action="#" method="post">
+					{% csrf_token %}
+					<h2>Registro de Usuarios</h2>
+					<div class="form-row-total">
+						<div class="form-row">
+							<!-- EDITADO, CAMBIE EL NAME E ID POR USER, tenia era name -->
+							<input type="text" name="user" id="user" class="input-text" placeholder="Usuario" required>
+						</div>
+						<div class="form-row">
+							<input type="email" name="email" id="email" class="input-text" placeholder="Correo Electronico" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+						</div>
 					</div>
-					<div class="form-row">
-						<input type="email" name="email" id="email" class="input-text" placeholder="Correo Electronico" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<div class="form-row-total">
+						<div class="form-row">
+							<input type="password" name="password" id="password" class="input-text" placeholder="Contraseña" required>
+						</div>
+						<div class="form-row">
+							<input type="password" name="comfirm" id="comfirm" class="input-text" placeholder="Confirmar contraseña" required>
+						</div>
 					</div>
-				</div>
-				<div class="form-row-total">
-					<div class="form-row">
-						<input type="password" name="password" id="password" class="input-text" placeholder="Contraseña" required>
+					<div class="form-row-last">
+						<input type="submit" name="register" class="register" value="Registrar Usuario">
 					</div>
-					<div class="form-row">
-						<input type="password" name="comfirm" id="comfirm" class="input-text" placeholder="Confirmar contraseña" required>
-					</div>
-				</div>
-				<div class="form-row-last">
-					<input type="submit" name="register" class="register" value="Registrar Usuario">
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>

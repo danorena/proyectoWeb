@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Inicio</title>
+
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css'%}" />
+
+		<!-- Font Awesome Stylesheet -->
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
+
+		<!-- Including Open Sans Condensed from Google Fonts -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic" />
+
+    </head>
+    
+    <body>
+
+    	<nav id="colorNav">
+			<ul>
+				<li class="green">
+					<a class="icon-home"></a>
+					<ul>
+						<li><a href="/index">Ir al inicio</a></li>
+					</ul>
+				</li>
+				<li class="blue">
+					<a class="icon-user"></a>
+					<ul>
+						<li><a href="/registro">Registrar Usuario</a></li>
+						<li><a href="#">Eliminar Usuario</a></li>
+					</ul>
+				</li>
+				<li class="yellow">
+					<a class="icon-book"></a>
+					<ul>
+						<li><a href="#">Ver asistencia</a></li>
+					</ul>
+				</li>
+				
+				<li class="red">
+					<a class="icon-cogs"></a>
+					<ul>
+						<li><a href="#">Cerrar Sesion</a></li>
+						<li><a href="#">Configuracion de la cuenta</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+        
+
+    
+    </body>
+</html>

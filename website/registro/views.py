@@ -8,7 +8,6 @@ password = ''
  
 # Create your views here.
 def callRegister(request):
-    pass
     global user,email,s,em,pwd 
     if request.method == 'POST':
         m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
@@ -25,6 +24,7 @@ def callRegister(request):
         c = f"CALL `spInsertUser`('{email}', '{user}', '{password}');"
         cursor.execute(c)
         m.commit()
+        return render(request,'register.html')
         
     return render(request,'register.html')
             

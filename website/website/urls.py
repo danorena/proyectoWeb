@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from login.views import callLogin
 from registro.views import callRegister
+from index.views import indexCall
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', callLogin),
-    path('registro/',callRegister)
+    path('', callLogin),
+    path('registro/',callRegister),
+    path('index/',indexCall)
 ]

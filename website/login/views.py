@@ -1,11 +1,10 @@
 from django.shortcuts import render
+from django.contrib import messages
 import mysql.connector as sql
-
-user = ''
-password = ''
 
 # Create your views here.
 def callLogin(request):
+    
     global user,password 
     if request.method == 'POST':
         m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
@@ -16,18 +15,22 @@ def callLogin(request):
             if key=='user':
                 user = value
             # Valida pw
-            if key == 'password':
+            if key == 'pass':
                 password = value
                 
         c = f"CALL `spLogin`('{user}', '{password}');"
         cursor.execute(c)
-        m.commit()
         
         valid = tuple(cursor.fetchall())
-        if t == ():
-            return (request,'login.html')
+        if valid == ():
+            messages.success(request,'Usuario o contrasena incorrectos')
+            return render(request,'login.html')
         else:
             return render(request,'index.html')
+    
+    return render(request,'login.html')
+
+    
             
         
     
