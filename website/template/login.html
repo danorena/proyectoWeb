@@ -21,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 <!--===============================================================================================-->
+<!-- Sweet Alert -->
+<link rel="stylesheet" type="text/css" href="{% static 'sweetAlert/sweetalert2.min.css' %}">
 </head>
 <body>
 	
@@ -88,7 +90,7 @@
 <!--===============================================================================================-->
 	<script src="{% static 'login/js/main.js' %}"></script>
 	<!-- Sweet Alert -->
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
 	{%for m in messages%}
 		<script>
 			Swal.fire({

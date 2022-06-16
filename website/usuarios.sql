@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2022 a las 21:21:38
+-- Tiempo de generación: 16-06-2022 a las 05:18:52
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -34,6 +34,13 @@ DROP PROCEDURE IF EXISTS `spInsertUser`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))  BEGIN
 
 INSERT INTO tableuser (`email`,`user`,`pass`) VALUES (`_email`,`_user`,`_pass`);
+
+END$$
+
+DROP PROCEDURE IF EXISTS `spLogin`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `_user` VARCHAR(150), IN `_pass` VARCHAR(150))  BEGIN
+
+SELECT * FROM tableuser WHERE `user` = _user AND `pass` = _pass;
 
 END$$
 
@@ -323,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `tableuser` (
   `user` varchar(100) NOT NULL,
   `pass` varchar(150) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tableuser`
@@ -331,16 +338,9 @@ CREATE TABLE IF NOT EXISTS `tableuser` (
 
 INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`) VALUES
 (1, 'email', 'user', 'pass'),
-(3, 'A', 'A', 'A'),
-(4, '_email', '_user', '_pass'),
-(6, 'danorena755@misena.edu.co', 'danorena', '755'),
-(7, 'danorena755@misena.edu.co', 'danorena', '755'),
-(8, 'David', 'idasystem_adsi@outlook.es', 'a'),
-(9, 'Carlos23', 'davidngiraldo@gmail.com', 'hola'),
-(10, 'davidngiraldo@gmail.com', 'Julio23', '1919'),
 (11, 'idasystem_adsi@outlook.es', 'a', 'a'),
-(12, 'danorena755@misena.edu.co', 'Carlos23', 'david'),
-(13, 'kaslu@gmail.com', 'Lucas', 'si');
+(42, 'idasystem_adsi@outlook.es', 'David', 'ss'),
+(43, 'idasystem_adsi@outlook.es', 'ss', 'ss');
 
 --
 -- Restricciones para tablas volcadas
