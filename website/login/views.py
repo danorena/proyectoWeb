@@ -4,8 +4,6 @@ import mysql.connector as sql
 
 # Create your views here.
 def callLogin(request):
-    
-    global user,password 
     if request.method == 'POST':
         m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
         cursor = m.cursor()
@@ -23,15 +21,12 @@ def callLogin(request):
         
         valid = tuple(cursor.fetchall())
         if valid == ():
-            messages.success(request,'Usuario o contrasena incorrectos')
+            messages.error(request,'Usuario o contrasena incorrectos')
             return render(request,'login.html')
         else:
             return render(request,'index.html')
-    
     return render(request,'login.html')
 
-    
-            
         
     
  
