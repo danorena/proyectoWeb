@@ -84,5 +84,16 @@
 				</form>
 			</div>
 		</div>
+		<!-- Sweet Alert -->
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		{%for m in messages%}
+			<script>
+				Swal.fire({
+					icon: 'success',
+					title: '😎 Registrado! 😎',
+					text: '{{m}}'
+				})
+			</script>
+		{% endfor %} 
 	</body>
 </html>
