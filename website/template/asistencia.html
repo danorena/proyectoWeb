@@ -5,12 +5,32 @@
         <meta charset="utf-8" />
         <title>Inicio</title>
 
+		<!-- Importando jquery -->
+		<script src="{%static 'asistencia/vendor/jquery/jquery-3.6.0.min.js'%}"></script>
+
         <!-- Our CSS stylesheet file -->
         <link rel="stylesheet" href="{% static 'assets/css/styles.css'%}" />
 
 		<!-- Font Awesome Stylesheet -->
-		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css'%}" />
 
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="{% static 'asistencia/css/estilos.css'%}" />
+
+		<!-- Importando select2 css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/select2/select2.css' %}">
+
+		<!-- Importando datatable css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/datatables/datatables.min.css' %}">
+
+		<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					alert("jQuery is working perfectly.");
+				});      
+			});
+		</script>
+		
     </head>
     
     <body>
@@ -47,8 +67,27 @@
 			</ul>
 		</nav>
 
-        
-
-    
+		<select class="js-example-basic-single" name="state">
+			<option value="AL">Alabama</option>
+			  ...
+			<option value="WY">Wyoming</option>
+		  </select>
+		
     </body>
+
+	<!-- Importando select2 js  -->
+	<script src="{% static 'asistencia/vendor/select2/select2.min.js' %}"></script>
+
+	<!-- Importando datatables js -->
+	<script src="{%static 'asistencia/vendor/datatables/datatables.min.js'%}"></script>
+
+	<!-- Importando main de javascript -->  
+	<script src="{%static 'asistencia/js/main.js'%}"></script>
+
 </html>
+
+<script> 
+	$(document).ready(function() {
+	    $('.js-example-basic-single').select2();
+	});
+</script>
