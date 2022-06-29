@@ -9,19 +9,11 @@ def asistenciaCall(request):
 def dir():
     import os
     # buscamos la ruta que contiene todas la fichas
-    path  = 'C:\\Users\\Lucas\\Documents\\Sena\\proyecto-sena\\attendance\\model\\datasets\\attendance_system_dataset'
+    path  = 'C:\\Users\David\Desktop\proyectoWeb\\fichas'
     # guardamos todas las fichas en una lista iterable
     dir_list = os.listdir(path)
     # Devolvemos una lista para iterar sobre esta 
     return dir_list
-
-# Llamamos la funcion
-fichas = dir()
-
-# Iteramos las fichas
-for ficha in fichas:
-    # Obtenemos cada ficha
-    print(ficha)
 
 def python_funct(request):
       #do something with the data passed
