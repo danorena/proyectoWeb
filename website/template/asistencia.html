@@ -23,14 +23,7 @@
 		<!-- Importando datatable css -->
         <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/datatables/datatables.min.css' %}">
 
-		<script>
-			$(document).ready(function(){
-				$("button").click(function(){
-					alert("jQuery is working perfectly.");
-				});      
-			});
-		</script>
-		
+
     </head>
     
     <body>
@@ -68,9 +61,11 @@
 		</nav>
 
 		<select class="js-example-basic-single" name="state">
-			<option value="AL">Alabama</option>
-			  ...
-			<option value="WY">Wyoming</option>
+			<!-- Iteramos las fichas -->
+			{% for ficha in fichas %}
+			<!-- Obtenemos cada ficha -->
+			<option value="{{ficha}}">{{ficha}}</option>
+			{% endfor %}
 		  </select>
 		
     </body>
@@ -85,6 +80,20 @@
 	<script src="{%static 'asistencia/js/main.js'%}"></script>
 
 </html>
+
+<script>
+
+	function callFicha(){ 
+
+		$.ajax({data:$("#datadiv").find("input").serialize(),
+		url: "{% url 'python_funct' %}",
+		type: "GET",
+		success: successFunc,
+		error: errorFunc
+});
+	}
+
+</script>
 
 <script> 
 	$(document).ready(function() {
