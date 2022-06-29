@@ -67,6 +67,8 @@
 			<option value="{{ficha}}">{{ficha}}</option>
 			{% endfor %}
 		  </select>
+		  <input type="date" name="si" id="si">
+		  <button type="submit">Enviar</button>
 		
     </body>
 
@@ -81,19 +83,7 @@
 
 </html>
 
-<script>
 
-	function callFicha(){ 
-
-		$.ajax({data:$("#datadiv").find("input").serialize(),
-		url: "{% url 'python_funct' %}",
-		type: "GET",
-		success: successFunc,
-		error: errorFunc
-});
-	}
-
-</script>
 
 <script> 
 	$(document).ready(function() {
