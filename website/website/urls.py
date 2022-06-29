@@ -18,9 +18,11 @@ from django.urls import path
 from login.views import callLogin
 from registro.views import callRegister
 from index.views import indexCall
+from asistencia.views import asistenciaCall
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', callLogin),
     path('registro/',callRegister),
-    path('index/',indexCall)
+    path('index/',indexCall),
+    path('asistencia/',asistenciaCall)
 ]
