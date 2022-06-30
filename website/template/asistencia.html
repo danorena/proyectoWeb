@@ -23,52 +23,59 @@
 		<!-- Importando datatable css -->
         <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/datatables/datatables.min.css' %}">
 
-
     </head>
     
     <body>
 
-    	<nav id="colorNav">
-			<ul>
-				<li class="green">
-					<a class="icon-home"></a>
-					<ul>
-						<li><a href="/index">Ir al inicio</a></li>
-					</ul>
-				</li>
-				<li class="blue">
-					<a class="icon-user"></a>
-					<ul>
-						<li><a href="/registro">Registrar Usuario</a></li>
-						<li><a href="#">Eliminar Usuario</a></li>
-					</ul>
-				</li>
-				<li class="yellow">
-					<a class="icon-book"></a>
-					<ul>
-						<li><a href="/asistencia">Ver asistencia</a></li>
-					</ul>
-				</li>
-				
-				<li class="red">	
-					<a class="icon-cogs"></a>
-					<ul>
-						<li><a href="#">Cerrar Sesion</a></li>
-						<li><a href="#">Configuracion de la cuenta</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
+		<header>
 
-		<select class="js-example-basic-single" name="state">
+			<nav id="colorNav">
+				<ul>
+					<li class="green">
+						<a class="icon-home"></a>
+						<ul>
+							<li><a href="/index">Ir al inicio</a></li>
+						</ul>
+					</li>
+					<li class="blue">
+						<a class="icon-user"></a>
+						<ul>
+							<li><a href="/registro">Registrar Usuario</a></li>
+							<li><a href="#">Eliminar Usuario</a></li>
+						</ul>
+					</li>
+					<li class="yellow">
+						<a class="icon-book"></a>
+						<ul>
+							<li><a href="/asistencia">Ver asistencia</a></li>
+						</ul>
+					</li>
+					
+					<li class="red">	
+						<a class="icon-cogs"></a>
+						<ul>
+							<li><a href="#">Cerrar Sesion</a></li>
+							<li><a href="#">Configuracion de la cuenta</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+
+		</header>
+
+		<div class="selectFicha">
+		<select class="js-example-basic-single" style="width: 50%" name="state">
+			<option value="" class="optionF">Seleccione una ficha</option>
 			<!-- Iteramos las fichas -->
 			{% for ficha in fichas %}
 			<!-- Obtenemos cada ficha -->
-			<option value="{{ficha}}">{{ficha}}</option>
+			<option value="{{ficha}}" class="optionF">{{ficha}}</option>
 			{% endfor %}
 		  </select>
 		  <input type="date" name="si" id="si">
 		  <button type="submit">Enviar</button>
+		</div>
+
 		
     </body>
 
@@ -87,6 +94,8 @@
 
 <script> 
 	$(document).ready(function() {
-	    $('.js-example-basic-single').select2();
+	    $('.js-example-basic-single').select2({
+			theme: "classic"
+		});
 	});
 </script>

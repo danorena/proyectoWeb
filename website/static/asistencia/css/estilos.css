@@ -1,54 +1,28 @@
-#menu ul li {
-    background-color:#2e518b;
-}
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
-#menu ul {
-  list-style:none;
+*{
+  font-family: 'ABeeZee', sans-serif;
   margin:0;
   padding:0;
 }
 
-#menu ul a {
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  font-weight:400;
-  font-size:15px;
-  padding:10px;
-  font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform:uppercase;
-  letter-spacing:1px;
+header{
+  font-size: 13px;
 }
 
-#menu ul li {
-  position:relative;
-  float:left;
-  margin:0;
-  padding:0;
+.selectFicha{
+  height: 40vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-#menu ul li:hover {
-  background:#5b78a7;
+.selectFicha input{
+  margin-left: 50px;
+  margin-right: 5px;
 }
 
-#menu ul ul {
-  display:none;
-  position:absolute;
-  top:100%;
-  left:0;
-  padding:0;
-}
-
-#menu ul ul li {
-  float:none;
-  width:150px
-}
-
-#menu ul ul a {
-  line-height:120%;
-  padding:10px 15px;
-}
-
-#menu ul li:hover > ul {
-  display:block;
+#optionF{
+  font-size: 20px;
 }
