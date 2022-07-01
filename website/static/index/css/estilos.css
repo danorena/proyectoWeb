@@ -10,6 +10,29 @@ header{
   font-size: 13px;
 }
 
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#img{
+  margin-top: 15vh;
+}
+
+img{
+  width: 100px;
+}
+
+p {
+  text-align: center;
+  color: #ffff;
+  font-size: 70px;
+}
+
+
+
+
 #navigation{
   background:#16222A;
   display: flex;
@@ -17,19 +40,8 @@ header{
   padding: 5px;
 }
 
-.selectFicha{
-  height: 70vh;
-  display:flex;
+#navigation-menu{
+  display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.selectFicha input{
-  margin-left: 50px;
-  margin-right: 5px;
-}
-
-#optionF{
-  font-size: 20px;
+  padding: 5px;
 }
