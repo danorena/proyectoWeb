@@ -3,11 +3,12 @@ console.log('correcto');
 document.querySelector('#boton').addEventListener('click', traerDatos());
 
 function traerDatos(){
+
     console.log('Ejecutando Funcion');
 
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open('GET', 'attendance.json', true);
+    xhttp.open('GET', 'js/attendance.json', true);
 
     xhttp.send();
 
@@ -23,7 +24,7 @@ function traerDatos(){
 
 
         for(let item of datos){
-            //console.log(item.student);
+            console.log(item.student);
             res.innerHTML += `
             <tr>
                 <td>${item.student}</td>
