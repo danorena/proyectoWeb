@@ -1,5 +1,6 @@
 # Instalar pandas
-# instalar openpyxl
+# instalar openpyx
+
 class Asistencia:
     # Constructor 
     def __init__(self,ficha,fecha):
@@ -69,21 +70,21 @@ class Asistencia:
         return dataFrame
 
     # Funcion para convertir el dataFrame a Excel
-    def toExcel(self,dataFrame,ficha):
+    def toExcel(self,dataFrame):
         try:
-            dataFrame.to_excel(f'../template/asistenciaFicha{ficha}.xlsx')
+            dataFrame.to_excel(f'../template/asistenciaFicha{self.ficha}.xlsx')
             print('Excel exportado correctamente')
         except:
             print('Hubo un error exportado el archivo Excel')
 
-    def toHtml(self,dataFrame,ficha):
-        try:
-            text_file = open(f"../template/asistenciaFicha{ficha}.html", "w")
-            text_file.write(dataFrame.to_html())
+    def toHtml(self,dataFrame):
+        #try:
+            text_file = open("../template/asistenciaFicha.html", "w")
+            text_file.write(dataFrame.to_html(classes='mystyle'))
             text_file.close()
             print('HTML exportado correctamente')
-        except:
-            print('Hubo un error exportado el archivo html')
+        #except:
+            #print('Hubo un error exportado el archivo html')
 
 
 fecha = '2022-05-11'
@@ -91,7 +92,6 @@ ficha = '01'
 
 asistencia = Asistencia(ficha,fecha)
 
-# asistencia.toExcel(asistencia.dataFrameAsistencia(fecha),ficha)
+# asistencia.toExcel(asistencia.dataFrameAsistencia(fecha))
 # print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(fecha)))
-asistencia.toHtml(asistencia.dataFrameAsistencia(fecha),ficha)
-
+asistencia.toHtml(asistencia.dataFrameAsistencia(fecha))

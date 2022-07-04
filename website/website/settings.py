@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'login',
     'registro',
     'index',
+    'asistencia',
+    'asistenciaFicha',
+    'configuracion'
 ]
 
 MIDDLEWARE = [
