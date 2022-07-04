@@ -23,53 +23,81 @@
 		<!-- Importando datatable css -->
         <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/datatables/datatables.min.css' %}">
 
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">-->
+
+		
 
     </head>
     
     <body>
 
-    	<nav id="colorNav">
-			<ul>
-				<li class="green">
-					<a class="icon-home"></a>
+		<header>
+		<div class="navigation" id="navigation">
+				<nav id="colorNav">
 					<ul>
-						<li><a href="/index">Ir al inicio</a></li>
+					<li class="green">
+						<a class="icon-home"></a>
+						<ul>
+							<li><a href="/index">Ir al inicio</a></li>
+						</ul>
+					</li>
+					<li class="blue">
+						<a class="icon-user"></a>
+						<ul>
+							<li><a href="/registro">Registrar Usuario</a></li>
+						</ul>
+					</li>
+					<li class="yellow">
+						<a class="icon-book"></a>
+						<ul>
+							<li><a href="/asistencia">Ver asistencia</a></li>
+						</ul>
+					</li>
+					
+					<li class="red">	
+						<a class="icon-cogs"></a>
+						<ul>
+							<li><a href="#">Cerrar Sesion</a></li>
+							<li><a href="/configuracion">Configuracion de la cuenta</a></li>
+						</ul>
+					</li>
 					</ul>
-				</li>
-				<li class="blue">
-					<a class="icon-user"></a>
-					<ul>
-						<li><a href="/registro">Registrar Usuario</a></li>
-						<li><a href="#">Eliminar Usuario</a></li>
-					</ul>
-				</li>
-				<li class="yellow">
-					<a class="icon-book"></a>
-					<ul>
-						<li><a href="/asistencia">Ver asistencia</a></li>
-					</ul>
-				</li>
-				
-				<li class="red">	
-					<a class="icon-cogs"></a>
-					<ul>
-						<li><a href="#">Cerrar Sesion</a></li>
-						<li><a href="#">Configuracion de la cuenta</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
+			</nav>
 
-		<select class="js-example-basic-single" name="state">
+		</div>
+		</header>
+
+		<div class="selectFicha">
+		<select class="js-example-basic-single" style="width: 50%" name="state">
+			<option value="" class="optionF">Seleccione una ficha</option>
 			<!-- Iteramos las fichas -->
 			{% for ficha in fichas %}
 			<!-- Obtenemos cada ficha -->
-			<option value="{{ficha}}">{{ficha}}</option>
+			<option value="{{ficha}}" class="optionF">{{ficha}}</option>
 			{% endfor %}
 		  </select>
 		  <input type="date" name="si" id="si">
 		  <button type="submit">Enviar</button>
-		
+		</div>
+
+		<div class="container">
+			<div class="section"></div>
+			<button class="btn" id="boton">Json</button>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Estudiante</th>
+					</tr>
+				</thead>
+				<tbody id="res">
+
+				</tbody>
+			</table>
+
+		</div>
+
     </body>
 
 	<!-- Importando select2 js  -->
@@ -81,12 +109,17 @@
 	<!-- Importando main de javascript -->  
 	<script src="{%static 'asistencia/js/main.js'%}"></script>
 
+	<!-- Importando main de javascript -->  
+	<script src="{%static 'asistencia/js/ajax2.js'%}"></script>
+
 </html>
 
 
 
 <script> 
 	$(document).ready(function() {
-	    $('.js-example-basic-single').select2();
+	    $('.js-example-basic-single').select2({
+			theme: "classic"
+		});
 	});
 </script>
