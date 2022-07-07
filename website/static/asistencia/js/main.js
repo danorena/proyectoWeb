@@ -24,17 +24,9 @@ function validate(e){
         lVali = false;
     }
 
-    function sendFicha(){
-        const request = new XMLHttpRequest()
-        request.open('POST',`/processFicha/${JSON.stringify(value)}`)
-        request.onload = () => {
-            const flaskMessage = request.responseText
-            console.log(flaskMessage)
-        }
-        request.send()
-    }
-
     if (lVali==true){
+
+        // Segun el valor seleccionado en el select de asistencia nos redirige
 
         switch (value) {
 
@@ -57,7 +49,5 @@ function validate(e){
         //form.submit();
 
     }
-
-    sendFicha();
 
 }

@@ -1,14 +1,6 @@
 # Instalar pandas
 # instalar openpyx
 
-from cgitb import text
-from flask import Flask
-import json
-
-import pandas
-
-app = Flask(__name__)
-
 class Asistencia:
     # Constructor 
     def __init__(self,ficha,fecha):
