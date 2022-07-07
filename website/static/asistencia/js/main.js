@@ -7,6 +7,9 @@ function validate(e){
     date = document.getElementById('date');
     select = document.getElementById('state');
     var value = select.options[select.selectedIndex].value;
+    ficha = document.getElementById('ficha').value = value;
+
+    console.log(ficha);
 
     console.log(value);
 
@@ -28,25 +31,25 @@ function validate(e){
 
         // Segun el valor seleccionado en el select de asistencia nos redirige
 
-        switch (value) {
+        //switch (value) {
 
-            case '01':
-                window.location.replace('../asistenciaFicha01/');
-                break;
+            //case '01':
+                //window.location.replace('../asistenciaFicha01/');
+                //break;
     
-            case '02':
-                window.location.replace('../asistenciaFicha02/');
-            break;
+            //case '02':
+                //window.location.replace('../asistenciaFicha02/');
+            //break;
     
-            case '03':
-                window.location.replace('../asistenciaFicha03/');
-            break;
+            //case '03':
+                //window.location.replace('../asistenciaFicha03/');
+            //break;
         
-            default:
-                break;
-        }
+            //default:
+                //break;
+        //}
 
-        //form.submit();
+        form.submit();
 
     }
 

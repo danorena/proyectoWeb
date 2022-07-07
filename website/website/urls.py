@@ -29,5 +29,5 @@ urlpatterns = [
     path('index/',indexCall),
     path('asistencia/',asistenciaCall),
     path('configuracion/',configuracionCall),
-    path('asistenciaFicha01/',asistenciaFichaCall)
+    path('asistenciaFicha/',asistenciaFichaCall)
 ]

@@ -90,7 +90,7 @@ class Asistencia:
                 </body>
                 </html>.
             """
-            text_file = open(f"../template/asistenciaFicha{ficha}.html", "w")
+            text_file = open("../template/asistenciaFicha.html", "w")
             text_file.write(html_string.format(table=dataFrame.to_html()))
             text_file.close()
             print('HTML exportado correctamente')
