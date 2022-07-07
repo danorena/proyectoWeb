@@ -41,6 +41,7 @@ p {
 }
 
 #navigation-menu{
+  background:#16222A;
   display: flex;
   justify-content: center;
   padding: 5px;

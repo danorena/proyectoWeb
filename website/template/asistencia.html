@@ -26,9 +26,6 @@
 		<!-- Importando datatable css -->
         <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/ohsnap/ohsnap.css' %}">
 
-		<!-- Importando datatable css -->
-        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/css/tables.css' %}">
-
     </head>
     
     <body>
@@ -59,7 +56,7 @@
 					<li class="red">	
 						<a class="icon-cogs"></a>
 						<ul>
-							<li><a href="#">Cerrar Sesion</a></li>
+							<li><a href="/asistenciaFicha01">Cerrar Sesion</a></li>
 							<li><a href="/configuracion">Configuracion de la cuenta</a></li>
 						</ul>
 					</li>
@@ -69,11 +66,10 @@
 		</div>
 		</header>
 
-
 		<form method="post" id="asistencia-form">
 			{% csrf_token %}
 			<div class="selectFicha">
-			<select class="js-example-basic-single" style="width: 50%" name="state" id="state">
+			<select class="select2" style="width: 50%" name="state" id="state">
 				<option value="" class="optionF" id="optionD">Seleccione una ficha</option>
 					<!-- Iteramos las fichas -->
 					{% for ficha in fichas %}
@@ -84,9 +80,14 @@
 		  		<input type="date" name="date" id="date">
 		  		<button type="submit" onclick="validate(event)">Enviar</button>
 			</div>
-		</form>	
+		</for>
+	
 
-		{% include "asistenciaFicha.html" %}
+		<div w3-include-html="asistenciaFicha01.html"></div> 
+
+		<script>
+			w3IncludeHTML();
+		</script>
 
     </body>
 
@@ -106,7 +107,7 @@
 
 <script> 
 	$(document).ready(function() {
-	    $('.js-example-basic-single').select2({
+	    $('.select2').select2({
 			theme: "classic"
 		});
 	});

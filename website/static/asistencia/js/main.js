@@ -1,10 +1,14 @@
 function validate(e){
+
     console.log('Validando ...');
     e.preventDefault();
 
     form  = document.getElementById('asistencia-form');
     date = document.getElementById('date');
     select = document.getElementById('state');
+    var value = select.options[select.selectedIndex].value;
+
+    console.log(value);
 
     lVali = true;
 
@@ -20,16 +24,40 @@ function validate(e){
         lVali = false;
     }
 
-    if (lVali==true){
-        form.submit();
+    function sendFicha(){
+        const request = new XMLHttpRequest()
+        request.open('POST',`/processFicha/${JSON.stringify(value)}`)
+        request.onload = () => {
+            const flaskMessage = request.responseText
+            console.log(flaskMessage)
+        }
+        request.send()
     }
 
-    window.open('../../../template/asistenciaFicha.html','_blank');
-}
+    if (lVali==true){
 
-function loadHTML(){
-    fetch('home.html')
-    .then(response=> response.text())
-    .then(text=> document.getElementById('homePage').innerHTML = text);
-  }
-  
+        switch (value) {
+
+            case '01':
+                window.location.replace('../asistenciaFicha01/');
+                break;
+    
+            case '02':
+                window.location.replace('../asistenciaFicha02/');
+            break;
+    
+            case '03':
+                window.location.replace('../asistenciaFicha03/');
+            break;
+        
+            default:
+                break;
+        }
+
+        //form.submit();
+
+    }
+
+    sendFicha();
+
+}

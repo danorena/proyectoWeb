@@ -1,4 +1,11 @@
-<table border="1" class="dataframe mystyle">
+
+            {% load static %}
+            <html>
+                <head><title>Asisteencia</title>
+                    <link rel="stylesheet" type="text/css" href="{% static 'asistencia/css/tables.css'%}"/>
+                </head>
+                <body>
+                    <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -219,3 +226,6 @@
     </tr>
   </tbody>
 </table>
+                </body>
+                </html>.
+            

@@ -1,6 +1,14 @@
 # Instalar pandas
 # instalar openpyx
 
+from cgitb import text
+from flask import Flask
+import json
+
+import pandas
+
+app = Flask(__name__)
+
 class Asistencia:
     # Constructor 
     def __init__(self,ficha,fecha):
@@ -78,13 +86,24 @@ class Asistencia:
             print('Hubo un error exportado el archivo Excel')
 
     def toHtml(self,dataFrame):
-        #try:
-            text_file = open("../template/asistenciaFicha.html", "w")
-            text_file.write(dataFrame.to_html(classes='mystyle'))
+        try:
+            html_string = """
+            {{% load static %}}
+            <html>
+                <head><title>Asisteencia</title>
+                    <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/tables.css'%}}"/>
+                </head>
+                <body>
+                    {table}
+                </body>
+                </html>.
+            """
+            text_file = open(f"../template/asistenciaFicha{ficha}.html", "w")
+            text_file.write(html_string.format(table=dataFrame.to_html()))
             text_file.close()
             print('HTML exportado correctamente')
-        #except:
-            #print('Hubo un error exportado el archivo html')
+        except:
+            print('Hubo un error exportado el archivo html')
 
 
 fecha = '2022-05-11'
