@@ -1,17 +1,18 @@
 from django.shortcuts import render
+from django.contrib import messages
 import mysql.connector as sql
 
-user = ''
-email = ''
-password = ''
+
 
  
 # Create your views here.
 def callRegister(request):
-    pass
-    global user,email,s,em,pwd 
     if request.method == 'POST':
-        m = sql.connector(host='localhost',user='root',passwd='',database='usuarios')
+        user = ''
+        email = ''
+        password = ''
+        confirm = ''
+        m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
         cursor = m.cursor()
         d= request.POST
         for key,value in d.items():
@@ -21,10 +22,17 @@ def callRegister(request):
                 email = value
             if key == 'password':
                 password = value
-                
-        c = f"CALL `spInsertUser`('{user}', '{email}', '{password}');"
-        cursor.execute(c)
-        m.commit()
+            if key == 'confirm':
+                confirm = value
+        if (password == confirm):
+            c = f"CALL `spInsertUser`('{email}', '{user}', '{password}');"
+            cursor.execute(c)
+            m.commit()
+            messages.success(request,'Usuario registrado correctamente')
+            return render(request,'register.html')
+        elif(password != confirm):
+            messages.error(request,'Las Contraseñas no coinciden')
+            return render(request,'register.html')
         
     return render(request,'register.html')
             

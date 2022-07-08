@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Inicio</title>
+
+		<!-- Importando jquery -->
+		<script src="{%static 'asistencia/vendor/jquery/jquery-3.6.0.min.js'%}"></script>
+
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css'%}" />
+
+		<!-- Font Awesome Stylesheet -->
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css'%}" />
+
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="{% static 'asistencia/css/estilos.css'%}" />
+
+		<!-- Importando select2 css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/select2/select2.css' %}">
+
+		<!-- Importando datatable css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/datatables/datatables.min.css' %}">
+
+		<!-- Importando datatable css -->
+        <link rel="stylesheet" type="text/css" href="{% static 'asistencia/vendor/ohsnap/ohsnap.css' %}">
+
+    </head>
+    
+    <body>
+
+		<header>
+		<div class="navigation" id="navigation">
+				<nav id="colorNav">
+					<ul>
+					<li class="green">
+						<a class="icon-home"></a>
+						<ul>
+							<li><a href="/index">Ir al inicio</a></li>
+						</ul>
+					</li>
+					<li class="blue">
+						<a class="icon-user"></a>
+						<ul>
+							<li><a href="/registro">Registrar Usuario</a></li>
+						</ul>
+					</li>
+					<li class="yellow">
+						<a class="icon-book"></a>
+						<ul>
+							<li><a href="/asistencia">Ver asistencia</a></li>
+						</ul>
+					</li>
+					
+					<li class="red">	
+						<a class="icon-cogs"></a>
+						<ul>
+							<li><a href="/asistenciaFicha01">Cerrar Sesion</a></li>
+							<li><a href="/configuracion">Configuracion de la cuenta</a></li>
+						</ul>
+					</li>
+					</ul>
+			</nav>
+
+		</div>
+		</header>
+
+		<form method="POST" id="asistencia-form">
+			{% csrf_token %}
+			<div class="selectFicha">
+			<select class="select2" style="width: 50%" name="state" id="state">
+				<option value="" class="optionF" id="optionD">Seleccione una ficha</option>
+					<!-- Iteramos las fichas -->
+					{% for ficha in fichas %}
+					<!-- Obtenemos cada ficha -->
+				<option value="{{ficha}}" class="optionF">{{ficha}}</option>
+					{% endfor %}
+		  	</select>
+			  	<input type="hidden" name="ficha" id="ficha">
+		  		<input type="date" name="date" id="date">
+		  		<button type="submit" onclick="validate(event)">Enviar</button>
+			</div>
+
+		</form>
+
+    </body>
+
+	<!-- Importando select2 js  -->
+	<script src="{% static 'asistencia/vendor/select2/select2.min.js' %}"></script>
+
+	<!-- Importando datatables js -->
+	<script src="{%static 'asistencia/vendor/datatables/datatables.min.js'%}"></script>
+
+	<!-- Importando main de javascript -->  
+	<script src="{%static 'asistencia/js/main.js'%}"></script>
+
+	<!-- Importando ohsnap -->  
+	<script src="{%static 'asistencia/vendor/ohsnap/ohsnap.js'%}"></script>
+
+</html>
+
+<!-- Script para aplicar select2 a nuestro select-option -->
+<script> 
+	$(document).ready(function() {
+	    $('.select2').select2({
+			theme: "classic"
+		});
+	});
+</script>

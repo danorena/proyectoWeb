@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,29 +6,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	{% load static %}
 	<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 <!--===============================================================================================-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
 <!--===============================================================================================-->	
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
 <!--===============================================================================================-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
 <!--===============================================================================================-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 <!--===============================================================================================-->
+<!-- Sweet Alert -->
+<link rel="stylesheet" type="text/css" href="{% static 'sweetAlert/sweetalert2.min.css' %}">
 </head>
 <body>
 	
@@ -35,17 +30,17 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					{% load static %}
 					<img src="{% static 'login/images/sena.png' %}" alt="Imagen logo SENA">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form method = "POST" class="login100-form validate-form">
+					{% csrf_token %}
 					<span class="login100-form-title">
 						Inicio de Sesion
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Escriba un usuario valido">
-						<input class="input100" type="text" name="user" placeholder="Usuario">
+						<input class="input100" type="text" id = 'user' name="user" placeholder="Usuario">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -53,7 +48,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Escriba una contraseña valida">
-						<input class="input100" type="password" name="pass" placeholder="Contraseña">
+						<input class="input100" type="password" id = 'password' name="pass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -61,14 +56,15 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Iniciar
+						<button type= 'submit' class="login100-form-btn">
+							Ingresar
 						</button>
 					</div>
 
 					
 
 					<div class="text-center p-t-136"></div>
+					
 				</form>
 			</div>
 		</div>
@@ -78,18 +74,13 @@
 
 	
 <!--===============================================================================================-->	
-	{% load static %}
 	<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
-	{% load static %}
 	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
-	{% load static %}
 		<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <!--===============================================================================================-->
-	{% load static %}
 	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
 <!--===============================================================================================-->
-	{% load static %}
 	<script src="{% static 'login/vendor/tilt/tilt.jquery.min.js' %}"></script>
 	<script >
 		$('.js-tilt').tilt({
@@ -97,8 +88,18 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	{% load static %}
 	<script src="{% static 'login/js/main.js' %}"></script>
-
+	<!-- Sweet Alert -->
+	<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
+	{%for m in messages%}
+		<script>
+			Swal.fire({
+				icon: 'error',
+				title: '😢 Algo esta incorrecto! 😢',
+				text: '{{m}}'
+			})
+		</script>
+	{% endfor %}
+	
 </body>
 </html>

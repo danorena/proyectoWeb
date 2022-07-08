@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Application definition
 
@@ -39,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'registro',
+    'index',
+    'asistencia',
+    'asistenciaFicha',
+    'configuracion'
 ]
 
 MIDDLEWARE = [
