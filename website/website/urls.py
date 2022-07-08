@@ -20,11 +20,14 @@ from registro.views import callRegister
 from index.views import indexCall
 from asistencia.views import asistenciaCall
 from configuracion.views import configuracionCall
+from asistenciaFicha.views import asistenciaFichaCall
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', callLogin),
     path('registro/',callRegister),
     path('index/',indexCall),
     path('asistencia/',asistenciaCall),
-    path('configuracion/',configuracionCall)
+    path('configuracion/',configuracionCall),
+    path('asistenciaFicha/',asistenciaFichaCall)
 ]

@@ -18,7 +18,7 @@ header{
 }
 
 .selectFicha{
-  height: 70vh;
+  height: 20vh;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,3 @@ header{
   margin-right: 5px;
 }
 
-#optionF{
-  font-size: 20px;
-}
