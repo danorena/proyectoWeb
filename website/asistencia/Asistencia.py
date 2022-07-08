@@ -77,7 +77,7 @@ class Asistencia:
     # Funcion para convertir el dataFrame a Excel
     def toExcel(self,dataFrame):
         try:
-            dataFrame.to_excel(f'../template/asistenciaFicha{self.ficha}.xlsx')
+            dataFrame.to_excel(f'{self.rutaDescarga}/website/static/asistencia/excel/asistenciaFicha.xlsx')
             print('Excel exportado correctamente')
         except:
             print('Hubo un error exportado el archivo Excel')
