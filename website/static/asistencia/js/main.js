@@ -9,9 +9,9 @@ function validate(e){
     var value = select.options[select.selectedIndex].value;
     ficha = document.getElementById('ficha').value = value;
 
+    fecha = document.getElementById('date').value;
     console.log(ficha);
-
-    console.log(value);
+    console.log(fecha);
 
     lVali = true;
 
