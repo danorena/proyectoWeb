@@ -77,18 +77,7 @@ class Asistencia:
     # Funcion para convertir el dataFrame a Excel
     def toExcel(self,dataFrame):
         try:
-<<<<<<< HEAD
             dataFrame.to_excel(f'../template/asistenciaFicha{self.ficha}.xlsx')
-            print('Excel exportado correctamente')
-        except:
-            print('Hubo un error exportado el archivo Excel')
-
-    def toHtml(self,dataFrame):
-        try:
-            text_file = open(f"../template/asistenciaFicha.html", "w")
-            text_file.write(dataFrame.to_html())
-=======
-            dataFrame.to_excel(f'{self.rutaDescarga}/website/static/asistencia/excel/asistenciaFicha.xlsx')
             print('Excel exportado correctamente')
         except:
             print('Hubo un error exportado el archivo Excel')
@@ -117,7 +106,6 @@ class Asistencia:
             text_file = open("template/asistenciaFicha.html", "w")
             # Exportamos el archivo html
             text_file.write(html_string.format(table=dataFrame.to_html()))
->>>>>>> lucas
             text_file.close()
             print('HTML exportado correctamente')
             # Creamos el archivo de Excel para que sea posible descargarlo
@@ -129,15 +117,7 @@ class Asistencia:
 # ficha = '2256256'
 # fecha = '2022-07-08'
 
-<<<<<<< HEAD
-asistencia = Asistencia(ficha,fecha)
-
-# asistencia.toExcel(asistencia.dataFrameAsistencia(fecha))
-# print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(fecha)))
-# asistencia.toHtml(asistencia.dataFrameAsistencia(fecha))
-=======
 # asistencia = Asistencia(ficha,fecha)
->>>>>>> lucas
 
 # asistencia.toExcel(asistencia.dataFrameAsistencia(ficha))
 # # print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(ficha)))
