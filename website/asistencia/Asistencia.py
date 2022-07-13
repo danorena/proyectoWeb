@@ -91,7 +91,6 @@ class Asistencia:
             <html>
                 <head><title>Asistencia</title>
                     <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/tables.css'%}}"/>
-                    <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/button.css'%}}"/>
                 </head>
                 <body>
                     {table}
