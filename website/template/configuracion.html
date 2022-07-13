@@ -57,37 +57,61 @@
 
                 <div>
 
-                    <h2>Edicion Cuenta</h2>
+                    <h2>Editar Cuenta</h2>
 
                     <div class="card-body">
 
-                        <form action="/editarCurso/" method="POST"></form>{% csrf_token %}
+                        <form method="POST">
+						{% csrf_token %}
 
-                        <div class="form-group">
-                            <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" 
-                            placeholder="idUser" required>
-                        </div>
+							<input type="text" id="idUser" name="idUser" class="form-control" 
+							required>
 
-                        <div class="form-group">
-                            <input type="text" id="txtUsuario" name="txtUsuario" class="form-control" 
-                            placeholder="user" required>
-                        </div>
+							<label class="form-group">
+								<input type="text" id="txtUser" name="txtUser" class="form-control" 
+								placeholder="Usuario" required>
+							</label>
 
-                        <div class="form-group">
-                            <input type="text" id="txtContraseña" name="txtContraseña" class="form-control" 
-                            placeholder="pass" required>
-                        </div>
+							<label class="form-group">
+								<input type="password" id="txtPass" name="txtPass" class="form-control" 
+								placeholder="Contraseña" required>
+							</label>
 
-                        <div class="form-group">
-                            <input type="text" id="txtEmail" name="txtEmail" class="form-control" 
-                            placeholder="email" required>
-                        </div>
+							<label class="form-group">
+								<input type="email" id="txtEmail" name="txtEmail" class="form-control" 
+								placeholder="Correo" required>
+							</label>
 
+							<button type="submit">Cambiar</button>
+						</form>
                     </div>
 
                 </div>
 
             </div>
-
+		<!-- Sweet Alert -->
+		<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
+		{% if messages %}
+			{%for m in messages%}
+				{% if m.tags == 'success' %}
+					<script>
+						Swal.fire({
+							icon: 'success',
+							title: '😎 Usuario Actualizado! 😎',
+							text: '{{m}}'
+						})
+					</script>
+				{% endif %}
+				{% if m.tags == 'error' %}
+					<script>
+						Swal.fire({
+							icon: 'error',
+							title: '😢 Error al actualizar el usuario! 😢',
+							text: '{{m}}'
+						})
+					</script>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
     </body>
 </html>
