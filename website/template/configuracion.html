@@ -5,14 +5,17 @@
         <meta charset="utf-8" />
         <title>Inicio</title>
 
+		<!-- Poner icono nuevo-->
+		<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
+		<!-- Main Style Css -->
         <!-- Our CSS stylesheet file -->
         <link rel="stylesheet" href="{% static 'assets/css/styles.css'%}" />
-
 		<!-- Font Awesome Stylesheet -->
-		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
-
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}">
 		<!-- Our CSS stylesheet file -->
         <link rel="stylesheet" href="{% static 'configuracion/css/estilos.css'%}" />
+		<!-- Sweet Alert -->
+		<link rel="stylesheet" type="text/css" href="{% static 'sweetAlert/sweetalert2.min.css' %}">
 
     </head>
     
@@ -24,7 +27,7 @@
 						<li class="green">
 							<a class="icon-home"></a>
 							<ul>
-								<li><a href="/index">Ir al inicio</a></li>
+								<li><a href="/">Ir al inicio</a></li>
 							</ul>
 						</li>
 						<li class="blue">
@@ -43,7 +46,7 @@
 						<li class="red">	
 							<a class="icon-cogs"></a>
 							<ul>
-								<li><a href="#">Cerrar Sesion</a></li>
+								<li><a href="/logout">Cerrar Sesion</a></li>
 								<li><a href="/configuracion">Configuracion de la cuenta</a></li>
 							</ul>
 						</li>
@@ -53,42 +56,41 @@
 			</div>
 			</header>
 
-            <div class="row">
+			<div class="page-content">
+				<div class="form-v9-content">
 
-                <div>
-
-                    <h2>Editar Cuenta</h2>
-
-                    <div class="card-body">
-
-                        <form method="POST">
+					<form class="form-detail" action="#" method="POST">
 						{% csrf_token %}
 
-							<input type="text" id="idUser" name="idUser" class="form-control" 
-							required>
+						<h2>Editar Cuenta</h2>
 
-							<label class="form-group">
-								<input type="text" id="txtUser" name="txtUser" class="form-control" 
-								placeholder="Usuario" required>
-							</label>
+						<div class="form-row-total">
+							<div class="form-row">
+								<input type="text" id="idUser" name="idUser" class="input-text" placeholder="Id" required>
+							</div>
+							<div class="form-row">
+								<input type="text" id="txtUser" name="txtUser" class="input-text" placeholder="Usuario" required>
+							</div>
+						</div>
 
-							<label class="form-group">
-								<input type="password" id="txtPass" name="txtPass" class="form-control" 
-								placeholder="Contraseña" required>
-							</label>
+						<div class="form-row-total">
+							<div class="form-row">
+								<input type="password" id="txtPass" name="txtPass" class="input-text" placeholder="Contraseña" required>
+							</div>
+							<div class="form-row">
+								<input type="email" id="txtEmail" name="txtEmail" class="input-text" placeholder="Correo" required>
+							</div>
+						</div>
 
-							<label class="form-group">
-								<input type="email" id="txtEmail" name="txtEmail" class="form-control" 
-								placeholder="Correo" required>
-							</label>
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Editar Usuario">
+							<input type="submit" name="register" class="register" value="Eliminar Usuario">
+						</div>
 
-							<button type="submit">Cambiar</button>
-						</form>
-                    </div>
+					</form>
+				</div>
+			</div>
 
-                </div>
-
-            </div>
 		<!-- Sweet Alert -->
 		<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
 		{% if messages %}

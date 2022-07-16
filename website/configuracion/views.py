@@ -21,7 +21,7 @@ def configuracionCall(request):
             # Recibe email
             if key=='txtEmail':
                 email = value
-                
+        c = f"CALL `spSearchId`('{idUser}','{email}', '{user}','{password}');"
         c = f"CALL `spUpdateUser`('{idUser}','{email}', '{user}','{password}');"
         cursor.execute(c)
         valid = m.commit()

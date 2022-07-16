@@ -1,9 +1,15 @@
 from django.shortcuts import render
 from django.contrib import messages
 import mysql.connector as sql
+from website.conexion import Conexion
+
+# con = Conexion()
+# m = con.conectando()
 
 # Create your views here.
+
 def callLogin(request):
+
     if request.method == 'POST':
         m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
         cursor = m.cursor()
@@ -24,10 +30,18 @@ def callLogin(request):
             messages.error(request,'Usuario o contrasena incorrectos')
             return render(request,'login.html')
         else:
-            return render(request,'index.html')
+            m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
+            cursor = m.cursor()
+            a = f"CALL `spUpdateSession`('True');"
+            cursor.execute(a)
+            m.commit()
+            return render(request,'index.html', )
     return render(request,'login.html')
 
-        
-    
- 
-            
+def callLogout(request):
+    m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
+    cursor = m.cursor()
+    a = f"CALL `spUpdateSession`('False');"
+    cursor.execute(a)
+    m.commit()
+    return render(request,'logearse.html')
