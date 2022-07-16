@@ -18,6 +18,7 @@ def indexCall(request):
     session = cursor.fetchone()
     print (session[0])
     if session[0] == 'True':
+        
         return render(request,'index.html')
     else:
         return render(request,'logearse.html')
