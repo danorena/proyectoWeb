@@ -7,17 +7,15 @@
 }
 
 .a-div{
-  margin: 100px 0;
+  margin: 10px 0;
   text-align: center;
 }
 
 #button { 
-  text-align: center;
   width: 100px;
   background-color: #4ca8af;
   border: none;
   color: white;
-  margin: 100px 0;
   padding: 10px 20px;
   text-decoration: none;
   font-size: 16px;
@@ -45,16 +43,6 @@ p {
   text-align: center;
   color: #ffff;
   font-size: 70px;
-}
-
-
-
-
-#navigation{
-  background:#16222A;
-  display: flex;
-  justify-content: center;
-  padding: 5px;
 }
 
 #navigation-menu{

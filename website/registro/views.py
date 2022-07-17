@@ -6,7 +6,6 @@ from website.conexion import Conexion
 # Create your views here.
 
 conn = Conexion('localhost','root','','usuarios')
-
 def callRegister(request):
     db = conn.dbConexion()
     cursor = db.cursor()

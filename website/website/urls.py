@@ -27,8 +27,6 @@ from asistenciaFicha.views import asistenciaFichaCall
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('accounts/login/', LoginView.as_view(template_name='login.html'), name="login"),
-    # path('accounts/login/', userLogin.as_view(), name="login"),
     path('logout/',callLogout),
     path('accounts/login/',callLogin),
     path('registro/',callRegister),
