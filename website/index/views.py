@@ -18,4 +18,3 @@ def indexCall(request):
         return render(request,'index.html')
     else:
         return render(request,'logearse.html')
-    # return render(request,'index.html')

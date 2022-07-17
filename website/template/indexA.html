@@ -51,7 +51,13 @@
 				</nav>
 	
 			</div>
+            
 			</header>
+
+            <div class="a-div">
+                <p id="p-admin">Para acceder al registrar usuario es nesesario una cuenta administrador</p>
+                <a href="/accounts/login" id="button">Iniciar sesion como administrador</a>
+            </div>
 			
 			<div class="img" id="img" style="text-align: center">
 			<img src="{% static 'index/images/att.png'%}" >
@@ -59,7 +65,9 @@
 
 
 			<div class="content">
-				<p>Attendance</p>
+                <div id="row1">
+				    <a href="/" id="button"><i class="fa-solid icon-arrow-left"></i> Volver al inicio</a>
+                </div>
 			</div>
 
 			{% if messages %}

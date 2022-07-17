@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from website.conexion import Conexion
+from login.views import callLogin
 
 
 # Create your views here.
@@ -50,4 +51,4 @@ def callRegister(request):
         else:
             return render(request,'logearse.html')
     else:
-        return render(request,'index.html')
+        return render(request,'indexA.html')
