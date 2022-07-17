@@ -85,13 +85,32 @@
 						</div>
 					</div>
 
+					<select class="select2" style="width: 50%" name="rol" id="rol" required>
+						<option value="" class="optionR" id="option">Seleccione un rol</option>
+						<option value="1" class="optionR">Profesor</option>
+						<option value="2" class="optionR">Administrador</option>
+					</select>
+						<input type="hidden" name="rolS" id="rolS">
+
 					<div class="form-row-last">
 						<input type="submit" name="register" class="register" value="Registrar Usuario">
 					</div>
 				</form>
 			</div>
 		</div>
-		<!-- Sweet Alert -->
+
+		<script> 
+			$(document).ready(function() {
+				$('.select2').select2({
+					theme: "classic"
+				});
+			});
+		</script>
+
+		<!-- Importando main de javascript -->  
+		<script src="{%static 'asistencia/js/main.js'%}"></script>
+		
+		<!-- Importando sweetalert -->  
 		<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
 		{% if messages %}
 			{%for m in messages%}

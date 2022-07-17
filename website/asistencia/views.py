@@ -1,10 +1,15 @@
 from django.shortcuts import render
-import mysql.connector as sql
+from website.conexion import Conexion
+
+
+# Create your views here.
+
+conn = Conexion('localhost','root','','usuarios')
 
 # Create your views here.
 def asistenciaCall(request):
-    m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
-    cursor = m.cursor()
+    db = conn.dbConexion()
+    cursor = db.cursor()
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
@@ -29,25 +34,6 @@ def asistenciaCall(request):
         return render(request,'asistencia.html',{'fichas' : fichas})
     else:
         return render(request,'logearse.html')
-
-    # from .Asistencia import Asistencia
-    # if request.method == 'POST':
-    #     d= request.POST
-    #     for key,value in d.items():
-    #         # Obtiene la fecha 
-    #         if key=='date':
-    #             date = value
-    #         # Obtiene ficha
-    #         if key == 'ficha':
-    #             ficha = value
-    #     # fecha = '2022-05-11'
-    #     # ficha = '01'
-    #     asistencia = Asistencia(ficha,date)
-    #     asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))
-    #     return render(request,'asistenciaFicha.html')
-
-    fichas = dir()
-    return render(request,'asistencia.html',{'fichas' : fichas})
     
 
 # Hacemos una funcion para leer las fichas

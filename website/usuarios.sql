@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2022 a las 23:41:28
+-- Tiempo de generación: 17-07-2022 a las 02:57:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -33,7 +33,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUser` (IN `_idUser` INT(3))
 DROP PROCEDURE IF EXISTS `spInsertUser`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))   BEGIN
 
-INSERT INTO tableuser (`email`,`user`,`pass`) VALUES (`_email`,`_user`,`_pass`);
+INSERT INTO tableuser (`email`,`user`,`pass`,rol) VALUES (`_email`,`_user`,`_pass`,1);
 
 END$$
 
@@ -44,10 +44,10 @@ SELECT * FROM tableuser WHERE `user` = _user AND `pass` = _pass;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchId`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchId` (IN `_USER` VARCHAR(150), IN `_PASS` VARCHAR(150))   BEGIN
+DROP PROCEDURE IF EXISTS `spSearchIdRol`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchIdRol` (IN `_USER` VARCHAR(150), IN `_PASS` VARCHAR(150))   BEGIN
 
-SELECT idUser from tableuser WHERE user =  _USER AND pass = _PASS; 
+SELECT idUser,rol from tableuser WHERE user =  _USER AND pass = _PASS; 
 
 END$$
 
@@ -61,15 +61,16 @@ END$$
 DROP PROCEDURE IF EXISTS `spSession`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSession` ()   BEGIN
 
-SELECT session FROM session WHERE idSession = 1;
+SELECT session,rolSession FROM session WHERE idSession = 1;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateIdUserS`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateIdUserS` (IN `_IDUSER` INT)   BEGIN
+DROP PROCEDURE IF EXISTS `spUpdateIdRolSession`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateIdRolSession` (IN `_IDUSER` INT, IN `_ROLUSER` INT)   BEGIN
 
 UPDATE session
-SET idUserS = _IDUSER;
+SET idUserS = _IDUSER,
+	rolSession = _ROLUSER;
 
 END$$
 
@@ -358,6 +359,27 @@ CREATE TABLE IF NOT EXISTS `itemsapp_tableuser` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `idRol` int(4) NOT NULL AUTO_INCREMENT,
+  `rol` varchar(150) NOT NULL,
+  PRIMARY KEY (`idRol`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`idRol`, `rol`) VALUES
+(1, 'profesor'),
+(2, 'administrador');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `session`
 --
 
@@ -365,15 +387,16 @@ DROP TABLE IF EXISTS `session`;
 CREATE TABLE IF NOT EXISTS `session` (
   `idSession` int(11) NOT NULL,
   `session` varchar(100) NOT NULL,
-  `idUserS` int(11) NOT NULL
+  `idUserS` int(11) NOT NULL,
+  `rolSession` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `session`
 --
 
-INSERT INTO `session` (`idSession`, `session`, `idUserS`) VALUES
-(1, 'True', 11);
+INSERT INTO `session` (`idSession`, `session`, `idUserS`, `rolSession`) VALUES
+(1, 'True', 43, 2);
 
 -- --------------------------------------------------------
 
@@ -387,22 +410,27 @@ CREATE TABLE IF NOT EXISTS `tableuser` (
   `email` varchar(150) NOT NULL,
   `user` varchar(100) NOT NULL,
   `pass` varchar(150) NOT NULL,
+  `rol` varchar(150) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tableuser`
 --
 
-INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`) VALUES
-(1, 'email', 'user', 'pass'),
-(11, '', '', ''),
-(42, 'idasystem_adsi@outlook.es', 'David', 'ss'),
-(43, 'rr@gmail.com', 'rr', 'rr'),
-(44, 'a@gmail.com', 'ab', 'ab'),
-(45, 'asd@sumama.com', 'asd', 'asd'),
-(46, 'elhptadel@perreo.com', 'Pablo', '2'),
-(47, 'el@asc.co', 'pablo', '1');
+INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`, `rol`) VALUES
+(1, 'email', 'user', 'pass', '1'),
+(42, 'idasystem_adsi@outlook.es', 'David', 'ss', '1'),
+(43, '1@gmail.com', '1', '1', '2'),
+(44, 'a@gmail.com', 'ab', 'ab', '1'),
+(45, 'asd@sumama.com', 'asd', 'asd', '1'),
+(46, 'elhptadel@perreo.com', 'Pablo', '2', '1'),
+(47, 'el@asc.co', 'pablo', '1', '1'),
+(48, 'lucasabedoya@gmail.com', 'lucas', '123', '1'),
+(49, 'm@gmail.com', 'mariaCarmen', '2', '1'),
+(50, 'c@gmail.com', 'carlos', 'we', '1'),
+(51, 'a@bob.com', 'lucas', '12', '1'),
+(52, 'test@test.co', 'test', '1', '1');
 
 --
 -- Restricciones para tablas volcadas

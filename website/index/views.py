@@ -1,18 +1,15 @@
 from operator import index
 from django.shortcuts import render
-import mysql.connector as sql
+from website.conexion import Conexion
+
 
 # Create your views here.
-# def indexCall(request):
-#     from login.views import session
-#     if session == True:
-#         return render(request,'index.html')
-#     else:
-#         return render(request,'logearse.html')
+
+conn = Conexion('localhost','root','','usuarios')
 
 def indexCall(request):
-    m = sql.connect(host='localhost',user='root',passwd='',database='usuarios')
-    cursor = m.cursor()
+    db = conn.dbConexion()
+    cursor = db.cursor()
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
