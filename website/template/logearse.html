@@ -20,47 +20,22 @@
 		<header>
 			<div class="navigation-menu" id="navigation-menu">
 					<nav id="colorNav">
-						<ul>
-						<li class="green">
-							<a class="icon-home"></a>
-							<ul>
-								<li><a href="/">Ir al inicio</a></li>
-							</ul>
-						</li>
-						<li class="blue">
-							<a class="icon-user"></a>
-							<ul>
-								<li><a href="/registro">Registrar Usuario</a></li>
-							</ul>
-						</li>
-						<li class="yellow">
-							<a class="icon-book"></a>
-							<ul>
-								<li><a href="/asistencia">Ver asistencia</a></li>
-							</ul>
-						</li>
-						
-						<li class="red">	
-							<a class="icon-cogs"></a>
-							<ul>
-								<li><a href="/logout">Cerrar Sesion</a></li>
-								<li><a href="/configuracion">Configuracion de la cuenta</a></li>
-							</ul>
-						</li>
-						</ul>
-				</nav>
-	
+				    </nav>
 			</div>
-			</header>
+		</header>
 			
-			<div class="img" id="img" style="text-align: center">
+		<div class="img" id="img" style="text-align: center">
 			<img src="{% static 'index/images/att.png'%}" >
-			</div>
+		</div>
 
 
-			<div class="content">
-				<p>Attendance</p>
-			</div>
+	    <div class="content">
+            <p>No has iniciado sesion</p>
+		</div>
+
+        <div class="a-div">
+            <a href="/accounts/login" id="button" >Iniciar sesion</a>
+        </div>
 
     </body>
 
@@ -68,6 +43,5 @@
 		<div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" 
 		style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" 
 		style="stroke: none; fill: #16222A;"></path></svg></div>
-
 	</footer>
 </html>

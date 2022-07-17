@@ -10,8 +10,6 @@ function validate(e){
     ficha = document.getElementById('ficha').value = value;
 
     fecha = document.getElementById('date').value;
-    console.log(ficha);
-    console.log(fecha);
 
     lVali = true;
 
@@ -27,30 +25,6 @@ function validate(e){
         lVali = false;
     }
 
-    if (lVali==true){
-
-        // Segun el valor seleccionado en el select de asistencia nos redirige
-
-        //switch (value) {
-
-            //case '01':
-                //window.location.replace('../asistenciaFicha01/');
-                //break;
-    
-            //case '02':
-                //window.location.replace('../asistenciaFicha02/');
-            //break;
-    
-            //case '03':
-                //window.location.replace('../asistenciaFicha03/');
-            //break;
-        
-            //default:
-                //break;
-        //}
-
         form.submit();
 
     }
-
-}
