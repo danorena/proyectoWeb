@@ -36,3 +36,31 @@ p {
   justify-content: center;
   padding: 5px;
 }
+
+#p-admin{
+  margin: 40px 0;
+  font-size: 30px;
+}
+.a-div{
+  margin: 80px 0;
+  text-align: center;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+}
+
+#row1{
+  margin: 40px;
+}
+
+#button { 
+  width: 100px;
+  background-color: #4ca8af;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
