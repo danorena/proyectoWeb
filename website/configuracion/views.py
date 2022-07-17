@@ -12,8 +12,8 @@ def configuracionCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
+    userS = session[2]
     db.close()
-    print(session[0])
     if session[0] == 'True':
         if request.method == 'POST':
             db = conn.dbConexion()
@@ -48,7 +48,7 @@ def configuracionCall(request):
             elif(password != confirm):
                 messages.error(request,'Las Contraseñas no coinciden')
                 return render(request,'configuracion.html')
-        return render(request,'configuracion.html')
+        return render(request,'configuracion.html',{'usuario' : userS})
     else:
         return render(request,'logearse.html')
 
