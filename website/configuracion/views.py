@@ -44,10 +44,10 @@ def configuracionCall(request):
                 db.commit()
                 messages.success(request,'Usuario editado correctamente')
                 db.close()
-                return render(request,'configuracion.html')
+                return render(request,'configuracion.html',{'usuario' : userS})
             elif(password != confirm):
                 messages.error(request,'Las Contraseñas no coinciden')
-                return render(request,'configuracion.html')
+                return render(request,'configuracion.html',{'usuario' : userS})
         return render(request,'configuracion.html',{'usuario' : userS})
     else:
         return render(request,'logearse.html')
