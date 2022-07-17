@@ -7,6 +7,9 @@ class Conexion:
     
     def dbConexion(self):
         import mysql.connector as sql
-        conectado = sql.connect(host=self.host,user=self.user,passwd=self.pw,database=self.db)
-        print('conectando')
-        return conectado
+        try:
+            conectado = sql.connect(host=self.host,user=self.user,passwd=self.pw,database=self.db)
+            print('conectando')
+            return conectado
+        except:
+            print ('Error al conectar a la db')

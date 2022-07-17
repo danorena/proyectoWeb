@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
-import mysql.connector as sql
 from website.conexion import Conexion
+conn = Conexion('localhost','root','','usuarios')
 
 
 # Create your views here.
