@@ -1,5 +1,8 @@
 # Instalar pandas
 # instalar openpyx
+from distutils.text_file import TextFile
+
+
 class Asistencia:
     # Constructor 
     def __init__(self,ficha,fecha):
@@ -89,7 +92,9 @@ class Asistencia:
             html_string = """
             {{% load static %}}
             <html>
-                <head><title>Asistencia</title>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Asistencia</title>
                     <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/tables.css'%}}"/>
                     <link rel="stylesheet" href="{{% static 'assets/font-awesome/css/font-awesome.css' %}}"/>
                 </head>
@@ -111,8 +116,14 @@ class Asistencia:
             # Creamos el archivo 
             text_file = open("template/asistenciaFicha.html", "w")
             # Exportamos el archivo html
-            text_file.write(html_string.format(table=dataFrame.to_html()))
+            html = html_string.format(table=dataFrame.to_html())
+            text_file.write(html)
             text_file.close()
+
+            # Hacemos que se conviertan todos los caracteres a utf-8
+            with open("template/asistenciaFicha.html", "w", encoding="utf-8") as file:
+                file.write(html)
+            
             print('HTML exportado correctamente')
             # Creamos el archivo de Excel para que sea posible descargarlo
             self.toExcel(dataFrame)
