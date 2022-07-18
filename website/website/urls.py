@@ -22,7 +22,7 @@ from login.views import callLogin, callLogout
 from registro.views import callRegister
 from index.views import indexCall
 from asistencia.views import asistenciaCall
-from configuracion.views import configuracionCall
+from configuracion.views import configuracionCall, deleteCall
 from asistenciaFicha.views import asistenciaFichaCall
 
 urlpatterns = [
@@ -33,5 +33,6 @@ urlpatterns = [
     path('', indexCall),
     path('asistencia/', asistenciaCall),
     path('configuracion/', configuracionCall),
+    path('delete/', deleteCall),
     path('asistenciaFicha/', asistenciaFichaCall)
 ]

@@ -62,7 +62,7 @@
 					<form class="form-detail" action="#" method="POST">
 						{% csrf_token %}
 
-						<h2>Editando Cuenta de {{usuario}}</h2>
+						<h2>Editando Cuenta de "{{usuario}}"</h2>
 
 						<div class="form-row-total">
 							<div class="form-row">
@@ -84,6 +84,7 @@
 
 						<div class="form-row-last">
 							<input type="submit" name="register" class="register" value="Editar Usuario">
+							<a href="/delete"><input type="button" name="register" class="register" value="Eliminar usuario"></a>
 						</div>
 
 					</form>

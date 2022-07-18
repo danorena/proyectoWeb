@@ -2,17 +2,16 @@ from django.shortcuts import render
 from django.contrib import messages
 from website.conexion import Conexion
 
-
 # Create your views here.
 
 conn = Conexion('localhost','root','','usuarios')
+
 def configuracionCall(request):
     db = conn.dbConexion()
     cursor = db.cursor()
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
-    userS = session[2]
     db.close()
     if session[0] == 'True':
         if request.method == 'POST':
@@ -22,6 +21,7 @@ def configuracionCall(request):
             cursor.execute(s)
             idUser = cursor.fetchone()
             id = idUser[0]
+            userS = idUser[3]
             db.close()
             d= request.POST
             for key,value in d.items():
@@ -51,5 +51,25 @@ def configuracionCall(request):
         return render(request,'configuracion.html',{'usuario' : userS})
     else:
         return render(request,'logearse.html')
-
-    
+ 
+def deleteCall(request):
+    db = conn.dbConexion()
+    cursor = db.cursor()
+    a = f"CALL `spSession`();"
+    cursor.execute(a)
+    session = cursor.fetchone()
+    userS = session[3]
+    db.close()
+    if session[0] == 'True':
+        if request.method == 'POST':
+            db = conn.dbConexion()
+            cursor = db.cursor()
+            procDeleteUser = f"CALL spDeleteUser('{id}');"
+            cursor.execute(procDeleteUser)
+            db.commit()
+            db.close()
+            return render(request,'logearse.html')
+        else:
+            return render(request,'delete.html',{'usuario' : userS})
+    else:
+        return render(request,'logearse.html')
