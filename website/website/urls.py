@@ -22,18 +22,17 @@ from login.views import callLogin, callLogout
 from registro.views import callRegister
 from index.views import indexCall
 from asistencia.views import asistenciaCall
-from configuracion.views import configuracionCall
+from configuracion.views import configuracionCall, deleteCall
 from asistenciaFicha.views import asistenciaFichaCall
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('accounts/login/', LoginView.as_view(template_name='login.html'), name="login"),
-    # path('accounts/login/', userLogin.as_view(), name="login"),
     path('logout/',callLogout),
     path('accounts/login/',callLogin),
     path('registro/',callRegister),
     path('', indexCall),
     path('asistencia/', asistenciaCall),
     path('configuracion/', configuracionCall),
+    path('delete/', deleteCall),
     path('asistenciaFicha/', asistenciaFichaCall)
 ]

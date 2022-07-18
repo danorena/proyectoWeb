@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.contrib import messages
 from website.conexion import Conexion
+from login.views import callLogin
 
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
-
+conn = Conexion('b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com','uempkk9vesxwg5af','dRzWyHluiDPzEZt68igL','b60lkhh7i47obofeagt8')
 def callRegister(request):
     db = conn.dbConexion()
     cursor = db.cursor()
@@ -51,4 +51,4 @@ def callRegister(request):
         else:
             return render(request,'logearse.html')
     else:
-        return render(request,'index.html')
+        return render(request,'indexA.html')

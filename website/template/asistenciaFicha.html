@@ -1,10 +1,23 @@
 
             {% load static %}
             <html>
-                <head><title>Asistencia</title>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Asistencia</title>
                     <link rel="stylesheet" type="text/css" href="{% static 'asistencia/css/tables.css'%}"/>
+                    <link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}"/>
                 </head>
                 <body>
+                    <header>
+			            <div class="navigation-menu" id="navigation-menu">
+                        <div class="row1" id="row1">
+                        <a href="/asistencia" id="button"><i class="fa-solid icon-arrow-left"></i> Buscar otra ficha</a>
+                        </div>
+                        <div class="row2" id="row2">
+                        <a href="{% static 'asistencia/excel/asistenciaFicha.xlsx'%}" download="asistencia.xlsx" id="button"><i class="fa-solid icon-download"></i> Descargar Asistencia</a>
+                        </div>
+			            </div>
+		            </header>
                     <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -16,12 +29,12 @@
   <tbody>
     <tr>
       <th>0</th>
-      <td>DavidAndresNorenaGiraldo</td>
+      <td>LucasArboledaBedoya</td>
       <td>No vino</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>LucasArboledaBedoya</td>
+      <td>DavidAndresNoreñaGiraldo</td>
       <td>No vino</td>
     </tr>
     <tr>
@@ -31,45 +44,21 @@
     </tr>
     <tr>
       <th>3</th>
-      <td>JuanPabloRojasArismendy</td>
+      <td>DanielGomezLeon</td>
       <td>No vino</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>SimonLopezPelaez</td>
+      <td>SamuelYepesOsorio</td>
       <td>No vino</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>MiguelAngelCastillaBallestas</td>
-      <td>No vino</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>JuanDavidRiveraCasallas</td>
-      <td>No vino</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>EmmanuelMunozZapata</td>
-      <td>No vino</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>JuanDavidRuizAlzate</td>
-      <td>No vino</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>OrlandoRobertoVilladiegoOtero</td>
+      <td>LeydiMoralesRubiano</td>
       <td>No vino</td>
     </tr>
   </tbody>
 </table>
-                <footer>
-                    <a href="{% static 'asistencia/excel/asistenciaFicha.xlsx'%}" download="asistencia.xlsx">Descargar Asistencia</a>
-                </footer>
                 </body>
-                
-                </html>
+            </html>
             

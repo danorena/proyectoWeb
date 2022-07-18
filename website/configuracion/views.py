@@ -2,10 +2,9 @@ from django.shortcuts import render
 from django.contrib import messages
 from website.conexion import Conexion
 
-
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com','uempkk9vesxwg5af','dRzWyHluiDPzEZt68igL','b60lkhh7i47obofeagt8')
 
 def configuracionCall(request):
     db = conn.dbConexion()
@@ -13,8 +12,9 @@ def configuracionCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
+    id = session[0]
+    userS = session[2]
     db.close()
-    print(session[0])
     if session[0] == 'True':
         if request.method == 'POST':
             db = conn.dbConexion()
@@ -22,7 +22,6 @@ def configuracionCall(request):
             s = f"CALL `spSearchIdUserS`();"
             cursor.execute(s)
             idUser = cursor.fetchone()
-            id = idUser[0]
             db.close()
             d= request.POST
             for key,value in d.items():
@@ -45,12 +44,39 @@ def configuracionCall(request):
                 db.commit()
                 messages.success(request,'Usuario editado correctamente')
                 db.close()
-                return render(request,'configuracion.html')
+                return render(request,'configuracion.html',{'usuario' : userS})
             elif(password != confirm):
                 messages.error(request,'Las Contraseñas no coinciden')
-                return render(request,'configuracion.html')
-        return render(request,'configuracion.html')
+                return render(request,'configuracion.html',{'usuario' : userS})
+        return render(request,'configuracion.html',{'usuario' : userS})
     else:
         return render(request,'logearse.html')
-
-    
+ 
+def deleteCall(request):
+    db = conn.dbConexion()
+    cursor = db.cursor()
+    a = f"CALL `spSession`();"
+    cursor.execute(a)
+    session = cursor.fetchone()
+    id = session[3]
+    userS = session[2]
+    db.close() 
+    if session[0] == 'True':
+        if request.method == 'POST':
+            db = conn.dbConexion()
+            cursor = db.cursor()
+            procDeleteUser = f"CALL spDeleteUser('{id}');"
+            cursor.execute(procDeleteUser)
+            db.commit()
+            messages.success(request,'Usuario eliminado correctamente')
+            db.close()
+            db = conn.dbConexion()
+            cursor = db.cursor()
+            a = "CALL `spUpdateSession`('False');"
+            cursor.execute(a)
+            db.commit()
+            return render(request,'delete.html')
+        else:
+            return render(request,'delete.html',{'usuario' : userS})
+    else:
+        return render(request,'logearse.html')
