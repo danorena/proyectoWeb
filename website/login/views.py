@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from website.conexion import Conexion
-conn = Conexion('localhost','root','','usuarios')
+
 
 
 # Create your views here.
@@ -34,15 +34,16 @@ def callLogin(request):
             a = "CALL `spUpdateSession`('True');"
             cursor.execute(a)
             db.commit()
-            b = f"CALL `spSearchIdRol`('{user}','{password}');"
+            b = f"CALL `spSearchInfo`('{user}','{password}');"
             cursor.execute(b)
             idUser = cursor.fetchone()
             id = idUser[0]
             rol = idUser[1]
+            userS = idUser[2]
             db.close()
             db = conn.dbConexion()
             cursor = db.cursor()
-            c = f"CALL `spUpdateIdRolSession`('{id}','{rol}');"
+            c = f"CALL `spUpdateInfoSession`('{id}','{rol}','{userS}');"
             cursor.execute(c)
             db.commit()
             db.close()

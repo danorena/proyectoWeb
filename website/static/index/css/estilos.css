@@ -6,23 +6,6 @@
   padding:0;
 }
 
-.a-div{
-  margin: 100px 0;
-  text-align: center;
-}
-
-#button { 
-  text-align: center;
-  width: 100px;
-  background-color: #4ca8af;
-  border: none;
-  color: white;
-  margin: 100px 0;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 16px;
-}
-
 header{
   font-size: 13px;
 }
@@ -47,19 +30,37 @@ p {
   font-size: 70px;
 }
 
-
-
-
-#navigation{
+#navigation-menu{
   background:#16222A;
   display: flex;
   justify-content: center;
   padding: 5px;
 }
 
-#navigation-menu{
-  background:#16222A;
+#p-admin{
+  margin: 40px 0;
+  font-size: 30px;
+}
+.a-div{
+  margin: 80px 0;
+  text-align: center;
+}
+
+.content{
   display: flex;
   justify-content: center;
-  padding: 5px;
+}
+
+#row1{
+  margin: 40px;
+}
+
+#button { 
+  width: 100px;
+  background-color: #4ca8af;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
 }

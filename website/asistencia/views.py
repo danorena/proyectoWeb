@@ -5,7 +5,6 @@ from website.conexion import Conexion
 # Create your views here.
 
 conn = Conexion('localhost','root','','usuarios')
-
 # Create your views here.
 def asistenciaCall(request):
     db = conn.dbConexion()

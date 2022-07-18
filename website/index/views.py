@@ -6,7 +6,6 @@ from website.conexion import Conexion
 # Create your views here.
 
 conn = Conexion('localhost','root','','usuarios')
-
 def indexCall(request):
     db = conn.dbConexion()
     cursor = db.cursor()
@@ -19,4 +18,3 @@ def indexCall(request):
         return render(request,'index.html')
     else:
         return render(request,'logearse.html')
-    # return render(request,'index.html')

@@ -1,3 +1,9 @@
+*{
+    font-family: 'ABeeZee', sans-serif;
+    margin:0;
+    padding:0;
+}
+
 body{
     text-align: center;
 	background: #16222A;  /* fallback for old browsers */
@@ -5,8 +11,34 @@ body{
 	background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+#navigation-menu{
+    background:#16222A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin-bottom: 30px;
+}
+
+#row1,#row2{
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    width: auto;
+    background-color: #4ca8af;
+}
+
+#button{
+    align-items: center;
+    width: 100px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
 table{
-    margin: 0 auto;
+    margin: auto;
 }
 
 thead {
@@ -41,3 +73,8 @@ th {
 td {
     text-align: center;
 }
+
+.a-div{
+    margin: 50px 0;
+    text-align: center;
+  }

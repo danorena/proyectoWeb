@@ -91,15 +91,22 @@ class Asistencia:
             <html>
                 <head><title>Asistencia</title>
                     <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/tables.css'%}}"/>
+                    <link rel="stylesheet" href="{{% static 'assets/font-awesome/css/font-awesome.css' %}}"/>
                 </head>
                 <body>
+                    <header>
+			            <div class="navigation-menu" id="navigation-menu">
+                        <div class="row1" id="row1">
+                        <a href="/asistencia" id="button"><i class="fa-solid icon-arrow-left"></i> Buscar otra ficha</a>
+                        </div>
+                        <div class="row2" id="row2">
+                        <a href="{{% static 'asistencia/excel/asistenciaFicha.xlsx'%}}" download="asistencia.xlsx" id="button"><i class="fa-solid icon-download"></i> Descargar Asistencia</a>
+                        </div>
+			            </div>
+		            </header>
                     {table}
-                <footer>
-                    <a href="{{% static 'asistencia/excel/asistenciaFicha.xlsx'%}}" download="asistencia.xlsx">Descargar Asistencia</a>
-                </footer>
                 </body>
-                
-                </html>
+            </html>
             """
             # Creamos el archivo 
             text_file = open("template/asistenciaFicha.html", "w")
