@@ -59,15 +59,38 @@
 
         <div>
 
-            <form action="#" method="post">
-				{% csrf_token %}
-				<h2>Esta seguro que desea eliminar la cuenta de "{{usuario}}"</h2>
+            	<form action="#" method="post">
+					{% csrf_token %}
+					<h2 id="delete-h2">¿Esta seguro que desea eliminar la cuenta de "{{usuario}}?"</h2>
+		
+					<div class="container-input">
+						<div>
+							<input id="button" type="submit" value="Eliminar Usuario">
+						</div>
+					</div>
 
-				<input type="submit" value="Eliminar Usuario">
+				</form>
 
-			</form>
-
+				<div class="img" id="img" style="text-align: center">
+					<img src="{% static 'index/images/att.png'%}" >
+				</div>
         </div>
+
+		<!-- Sweet Alert -->
+		<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
+		{% if messages %}
+			{%for m in messages%}
+				{% if m.tags == 'success' %}
+					<script>
+						Swal.fire({
+							icon: 'success',
+							title: '😎 Usuario Eliminado! 😎',
+							text: '{{m}}'
+						})
+					</script>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
 
     </body>
 </html>

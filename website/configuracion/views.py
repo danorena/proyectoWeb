@@ -68,8 +68,14 @@ def deleteCall(request):
             procDeleteUser = f"CALL spDeleteUser('{id}');"
             cursor.execute(procDeleteUser)
             db.commit()
+            messages.success(request,'Usuario eliminado correctamente')
             db.close()
-            return render(request,'logearse.html')
+            db = conn.dbConexion()
+            cursor = db.cursor()
+            a = "CALL `spUpdateSession`('False');"
+            cursor.execute(a)
+            db.commit()
+            return render(request,'delete.html')
         else:
             return render(request,'delete.html',{'usuario' : userS})
     else:
