@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-07-2022 a las 23:41:53
+-- Tiempo de generación: 18-07-2022 a las 03:41:56
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -61,7 +61,7 @@ END$$
 DROP PROCEDURE IF EXISTS `spSession`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSession` ()   BEGIN
 
-SELECT session,rolSession,userSession FROM session WHERE idSession = 1;
+SELECT session,rolSession,userSession,idUserS FROM session WHERE idSession = 1;
 
 END$$
 
@@ -397,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `session` (
 --
 
 INSERT INTO `session` (`idSession`, `session`, `idUserS`, `rolSession`, `userSession`) VALUES
-(1, 'True', 1, 1, 'user');
+(1, 'False', 49, 1, 'mariaCarmen');
 
 -- --------------------------------------------------------
 
@@ -413,30 +413,15 @@ CREATE TABLE IF NOT EXISTS `tableuser` (
   `pass` varchar(150) NOT NULL,
   `rol` varchar(150) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tableuser`
 --
 
 INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`, `rol`) VALUES
-(1, 'email', 'user', 'pass', '1'),
-(42, 'idasystem_adsi@outlook.es', 'David', 'ss', '1'),
-(43, '1@gmail.com', '1', '1', '2'),
-(44, 'a@gmail.com', 'ab', 'ab', '1'),
-(45, 'asd@sumama.com', 'asd', 'asd', '1'),
-(46, 'elhptadel@perreo.com', 'Pablo', '2', '1'),
-(47, 'el@asc.co', 'pablo', '1', '1'),
-(48, 'lucasabedoya@gmail.com', 'lucas', '123', '1'),
-(49, 'm@gmail.com', 'mariaCarmen', '2', '1'),
-(50, 'c@gmail.com', 'carlos', 'we', '1'),
-(51, 'a@bob.com', 'lucas', '12', '1'),
-(52, 'test@test.co', 'test', '1', '1'),
-(53, 'david@david.com', 'david', '123', '2'),
 (54, '12@gmail.co', '12', '12', '1'),
-(56, 'asd@gmail.co', 'asd', 'asd', '0'),
-(57, 'a2@gmail.com', 'a2', 'a2', '1'),
-(58, 'h@h.co', 'h', 'h', '1');
+(58, 'h@h.co', 'h', 'h', '2');
 
 --
 -- Restricciones para tablas volcadas

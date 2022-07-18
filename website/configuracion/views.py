@@ -58,7 +58,7 @@ def deleteCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
-    id = session[0]
+    id = session[3]
     userS = session[2]
     db.close() 
     if session[0] == 'True':
