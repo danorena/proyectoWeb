@@ -26,6 +26,7 @@ from configuracion.views import configuracionCall, deleteCall
 from asistenciaFicha.views import asistenciaFichaCall
 
 urlpatterns = [
+    #Llamamos funciones para ver los templates segun la URL usando el path
     path('admin/', admin.site.urls),
     path('logout/',callLogout),
     path('accounts/login/',callLogin),
