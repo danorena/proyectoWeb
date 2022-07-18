@@ -6,7 +6,7 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com','uempkk9vesxwg5af','dRzWyHluiDPzEZt68igL','b60lkhh7i47obofeagt8')
+conn = Conexion('localhost','root','','usuarios')
 def callLogin(request):
 
     if request.method == 'POST':
