@@ -53,23 +53,25 @@ def configuracionCall(request):
         return render(request,'logearse.html')
  
 def deleteCall(request):
-    db = conn.dbConexion()
-    cursor = db.cursor()
-    a = f"CALL `spSession`();"
-    cursor.execute(a)
-    session = cursor.fetchone()
-    userS = session[3]
-    db.close()
-    if session[0] == 'True':
-        if request.method == 'POST':
-            db = conn.dbConexion()
-            cursor = db.cursor()
-            procDeleteUser = f"CALL spDeleteUser('{id}');"
-            cursor.execute(procDeleteUser)
-            db.commit()
-            db.close()
-            return render(request,'logearse.html')
-        else:
-            return render(request,'delete.html',{'usuario' : userS})
-    else:
-        return render(request,'logearse.html')
+    pass
+    # db = conn.dbConexion()
+    # cursor = db.cursor()
+    # a = f"CALL `spSession`();"
+    # cursor.execute(a)
+    # session = cursor.fetchone()
+    # id = session[0]
+    # userS = session[3]
+    # db.close()
+    # if session[0] == 'True':
+    #     if request.method == 'POST':
+    #         db = conn.dbConexion()
+    #         cursor = db.cursor()
+    #         procDeleteUser = f"CALL spDeleteUser('{id}');"
+    #         cursor.execute(procDeleteUser)
+    #         db.commit()
+    #         db.close()
+    #         return render(request,'logearse.html')
+    #     else:
+    #         return render(request,'delete.html',{'usuario' : userS})
+    # else:
+    #     return render(request,'logearse.html')
