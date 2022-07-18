@@ -6,7 +6,7 @@ from login.views import callLogin
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com','uempkk9vesxwg5af','dRzWyHluiDPzEZt68igL','b60lkhh7i47obofeagt8')
 def callRegister(request):
     db = conn.dbConexion()
     cursor = db.cursor()

@@ -87,13 +87,13 @@ DATABASES = {
         # Maquina o gestor de la db
         'ENGINE': 'django.db.backends.mysql',
         # Nombre DB
-        'NAME': 'b60lkhh7i47obofeagt8',
+        'NAME': 'usuarios',
         # Usuario de la db
-        'USER' : 'uempkk9vesxwg5af',
+        'USER' : 'root',
         # Pw de la db
-        'PASSWORD' : 'dRzWyHluiDPzEZt68igL',
+        'PASSWORD' : '',
         # Host, comunmente es localhost
-        'HOST' : 'b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com',
+        'HOST' : 'localhost',
         # Puerto para acceder a la db
         'PORT' : '3306',
     }
