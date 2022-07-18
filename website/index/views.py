@@ -12,7 +12,6 @@ def indexCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
-    print (session[0])
     if session[0] == 'True':
         
         return render(request,'index.html')

@@ -12,6 +12,8 @@ def configuracionCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
+    id = session[0]
+    userS = session[2]
     db.close()
     if session[0] == 'True':
         if request.method == 'POST':
@@ -20,8 +22,6 @@ def configuracionCall(request):
             s = f"CALL `spSearchIdUserS`();"
             cursor.execute(s)
             idUser = cursor.fetchone()
-            id = idUser[0]
-            userS = idUser[3]
             db.close()
             d= request.POST
             for key,value in d.items():
@@ -53,25 +53,24 @@ def configuracionCall(request):
         return render(request,'logearse.html')
  
 def deleteCall(request):
-    pass
-    # db = conn.dbConexion()
-    # cursor = db.cursor()
-    # a = f"CALL `spSession`();"
-    # cursor.execute(a)
-    # session = cursor.fetchone()
-    # id = session[0]
-    # userS = session[3]
-    # db.close()
-    # if session[0] == 'True':
-    #     if request.method == 'POST':
-    #         db = conn.dbConexion()
-    #         cursor = db.cursor()
-    #         procDeleteUser = f"CALL spDeleteUser('{id}');"
-    #         cursor.execute(procDeleteUser)
-    #         db.commit()
-    #         db.close()
-    #         return render(request,'logearse.html')
-    #     else:
-    #         return render(request,'delete.html',{'usuario' : userS})
-    # else:
-    #     return render(request,'logearse.html')
+    db = conn.dbConexion()
+    cursor = db.cursor()
+    a = f"CALL `spSession`();"
+    cursor.execute(a)
+    session = cursor.fetchone()
+    id = session[3]
+    userS = session[2]
+    db.close()
+    if session[0] == 'True':
+        if request.method == 'POST':
+            db = conn.dbConexion()
+            cursor = db.cursor()
+            procDeleteUser = f"CALL spDeleteUser('{id}');"
+            cursor.execute(procDeleteUser)
+            db.commit()
+            db.close()
+            return render(request,'logearse.html')
+        else:
+            return render(request,'delete.html',{'usuario' : userS})
+    else:
+        return render(request,'logearse.html')
