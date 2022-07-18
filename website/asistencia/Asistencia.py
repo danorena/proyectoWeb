@@ -1,13 +1,17 @@
 # Instalar pandas
 # instalar openpyx
+from distutils.text_file import TextFile
+
+
 class Asistencia:
     # Constructor 
     def __init__(self,ficha,fecha):
         self.ficha = ficha
         self.fecha = fecha
-        from .ruta import ruta
-        # from ruta import ruta
+        from .ruta import ruta, rutaDescarga
+        # from ruta import ruta, rutaDescarga
         self.ruta = ruta()
+        self.rutaDescarga = rutaDescarga()
 
     # Funcion para obtener el nombre del aprendiz, la asistencia y el dia
     def dataFrameAsistencia(self,ficha):
@@ -75,9 +79,8 @@ class Asistencia:
 
     # Funcion para convertir el dataFrame a Excel
     def toExcel(self,dataFrame):
-        
         try:
-            dataFrame.to_excel(f'{self.ruta}/{self.ficha}/database/asistenciaFicha.xlsx')
+            dataFrame.to_excel(f'{self.rutaDescarga}/website/static/asistencia/excel/asistenciaFicha.xlsx')
             print('Excel exportado correctamente')
         except:
             print('Hubo un error exportado el archivo Excel')
@@ -85,33 +88,54 @@ class Asistencia:
     # Funcion para convertir el dataFrame a Html
     def toHtml(self,dataFrame):
         try:
-            rutaDescarga = f'{self.ruta}/{self.ficha}/database/asistenciaFicha.xlsx'
-            
+            # Creamos el string para hacer el documento de HMTL
             html_string = """
             {{% load static %}}
             <html>
-                <head><title>Asisteencia</title>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Asistencia</title>
                     <link rel="stylesheet" type="text/css" href="{{% static 'asistencia/css/tables.css'%}}"/>
+                    <link rel="stylesheet" href="{{% static 'assets/font-awesome/css/font-awesome.css' %}}"/>
                 </head>
                 <body>
+                    <header>
+			            <div class="navigation-menu" id="navigation-menu">
+                        <div class="row1" id="row1">
+                        <a href="/asistencia" id="button"><i class="fa-solid icon-arrow-left"></i> Buscar otra ficha</a>
+                        </div>
+                        <div class="row2" id="row2">
+                        <a href="{{% static 'asistencia/excel/asistenciaFicha.xlsx'%}}" download="asistencia.xlsx" id="button"><i class="fa-solid icon-download"></i> Descargar Asistencia</a>
+                        </div>
+			            </div>
+		            </header>
                     {table}
-                    
                 </body>
-                </html>
+            </html>
             """
+            # Creamos el archivo 
             text_file = open("template/asistenciaFicha.html", "w")
-            text_file.write(html_string.format(table=dataFrame.to_html()))
+            # Exportamos el archivo html
+            html = html_string.format(table=dataFrame.to_html())
+            text_file.write(html)
             text_file.close()
+
+            # Hacemos que se conviertan todos los caracteres a utf-8
+            with open("template/asistenciaFicha.html", "w", encoding="utf-8") as file:
+                file.write(html)
+            
             print('HTML exportado correctamente')
+            # Creamos el archivo de Excel para que sea posible descargarlo
+            self.toExcel(dataFrame)
         except:
             print('Hubo un error exportado el archivo html')
 
 
-ficha = '2256256'
-fecha = '2022-07-07'
+# ficha = '2256256'
+# fecha = '2022-07-08'
 
-asistencia = Asistencia(ficha,fecha)
+# asistencia = Asistencia(ficha,fecha)
 
-# # asistencia.toExcel(asistencia.dataFrameAsistencia(ficha))
+# asistencia.toExcel(asistencia.dataFrameAsistencia(ficha))
 # # print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(ficha)))
-asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))
+# asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))

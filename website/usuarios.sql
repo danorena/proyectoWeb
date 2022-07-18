@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2022 a las 05:18:52
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Tiempo de generación: 18-07-2022 a las 03:41:56
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,34 +18,73 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `usuarios`
+-- Base de datos: `b60lkhh7i47obofeagt8`
 --
-CREATE DATABASE IF NOT EXISTS `usuarios` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `usuarios`;
+CREATE DATABASE IF NOT EXISTS `b60lkhh7i47obofeagt8` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `b60lkhh7i47obofeagt8`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
 DROP PROCEDURE IF EXISTS `spDeleteUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUser` (IN `_idUser` INT(3))  DELETE FROM `tableuser` WHERE (`idUser`) = `_idUser`$$
+CREATE PROCEDURE `spDeleteUser` (IN `_idUser` INT(3))   DELETE FROM `tableuser` WHERE (`idUser`) = `_idUser`$$
 
 DROP PROCEDURE IF EXISTS `spInsertUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))  BEGIN
+CREATE PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150), IN `_rol` INT)   BEGIN
 
-INSERT INTO tableuser (`email`,`user`,`pass`) VALUES (`_email`,`_user`,`_pass`);
+INSERT INTO tableuser (`email`,`user`,`pass`,rol) VALUES (`_email`,`_user`,`_pass`,`_rol`);
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spLogin`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `_user` VARCHAR(150), IN `_pass` VARCHAR(150))  BEGIN
+CREATE PROCEDURE `spLogin` (IN `_user` VARCHAR(150), IN `_pass` VARCHAR(150))   BEGIN
 
 SELECT * FROM tableuser WHERE `user` = _user AND `pass` = _pass;
 
 END$$
 
+DROP PROCEDURE IF EXISTS `spSearchIdUserS`$$
+CREATE PROCEDURE `spSearchIdUserS` ()   BEGIN
+
+SELECT idUserS FROM session WHERE idSession = 1;
+
+END$$
+
+DROP PROCEDURE IF EXISTS `spSearchInfo`$$
+CREATE PROCEDURE `spSearchInfo` (IN `_USER` VARCHAR(150), IN `_PASS` VARCHAR(150))   BEGIN
+
+SELECT idUser,rol,user from tableuser WHERE user =  _USER AND pass = _PASS; 
+
+END$$
+
+DROP PROCEDURE IF EXISTS `spSession`$$
+CREATE PROCEDURE `spSession` ()   BEGIN
+
+SELECT session,rolSession,userSession,idUserS FROM session WHERE idSession = 1;
+
+END$$
+
+DROP PROCEDURE IF EXISTS `spUpdateInfoSession`$$
+CREATE PROCEDURE `spUpdateInfoSession` (IN `_IDUSER` INT, IN `_ROLUSER` INT, IN `_USER` VARCHAR(150))   BEGIN
+
+UPDATE session
+SET idUserS = _IDUSER,
+	rolSession = _ROLUSER,
+	userSession = _USER;
+END$$
+
+DROP PROCEDURE IF EXISTS `spUpdateSession`$$
+CREATE PROCEDURE `spUpdateSession` (IN `_SESSION` VARCHAR(100))   BEGIN
+
+UPDATE session
+SET session = _SESSION
+WHERE idSession = 1;
+
+END$$
+
 DROP PROCEDURE IF EXISTS `spUpdateUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUser` (IN `_idUser` INT(5), IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))  BEGIN
+CREATE PROCEDURE `spUpdateUser` (IN `_idUser` INT(5), IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))   BEGIN
 UPDATE `tableuser` SET 
 `email`=`_email`,
 `user`=`_user`,
@@ -320,6 +359,49 @@ CREATE TABLE IF NOT EXISTS `itemsapp_tableuser` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `idRol` int(4) NOT NULL AUTO_INCREMENT,
+  `rol` varchar(150) NOT NULL,
+  PRIMARY KEY (`idRol`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`idRol`, `rol`) VALUES
+(1, 'profesor'),
+(2, 'administrador');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `session`
+--
+
+DROP TABLE IF EXISTS `session`;
+CREATE TABLE IF NOT EXISTS `session` (
+  `idSession` int(11) NOT NULL,
+  `session` varchar(100) NOT NULL,
+  `idUserS` int(11) NOT NULL,
+  `rolSession` int(11) NOT NULL,
+  `userSession` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `session`
+--
+
+INSERT INTO `session` (`idSession`, `session`, `idUserS`, `rolSession`, `userSession`) VALUES
+(1, 'False', 49, 1, 'mariaCarmen');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tableuser`
 --
 
@@ -329,18 +411,17 @@ CREATE TABLE IF NOT EXISTS `tableuser` (
   `email` varchar(150) NOT NULL,
   `user` varchar(100) NOT NULL,
   `pass` varchar(150) NOT NULL,
+  `rol` varchar(150) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tableuser`
 --
 
-INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`) VALUES
-(1, 'email', 'user', 'pass'),
-(11, 'idasystem_adsi@outlook.es', 'a', 'a'),
-(42, 'idasystem_adsi@outlook.es', 'David', 'ss'),
-(43, 'idasystem_adsi@outlook.es', 'ss', 'ss');
+INSERT INTO `tableuser` (`idUser`, `email`, `user`, `pass`, `rol`) VALUES
+(54, '12@gmail.co', '12', '12', '1'),
+(58, 'h@h.co', 'h', 'h', '2');
 
 --
 -- Restricciones para tablas volcadas

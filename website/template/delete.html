@@ -5,14 +5,17 @@
         <meta charset="utf-8" />
         <title>Inicio</title>
 
+		<!-- Poner icono nuevo-->
+		<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
+		<!-- Main Style Css -->
         <!-- Our CSS stylesheet file -->
         <link rel="stylesheet" href="{% static 'assets/css/styles.css'%}" />
-
 		<!-- Font Awesome Stylesheet -->
-		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}" />
-
+		<link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}">
 		<!-- Our CSS stylesheet file -->
-        <link rel="stylesheet" href="{% static 'index/css/estilos.css'%}" />
+        <link rel="stylesheet" href="{% static 'configuracion/css/estilos.css'%}" />
+		<!-- Sweet Alert -->
+		<link rel="stylesheet" type="text/css" href="{% static 'sweetAlert/sweetalert2.min.css' %}">
 
     </head>
     
@@ -43,32 +46,45 @@
 						<li class="red">	
 							<a class="icon-cogs"></a>
 							<ul>
-								<li><a href="/configuracion">Configuracion de la cuenta</a></li>
 								<li><a href="/logout">Cerrar Sesion</a></li>
+								<li><a href="/configuracion">Configuracion de la cuenta</a></li>
 							</ul>
 						</li>
 						</ul>
 				</nav>
 	
 			</div>
-			</header>
-			
-			<div class="img" id="img" style="text-align: center">
-			<img src="{% static 'index/images/att.png'%}" >
-			</div>
 
+		</header>
 
-			<div class="content">
-				<p>Attendance</p>
-			</div>
+        <div>
 
-			{% if messages %}
+            	<form action="#" method="post">
+					{% csrf_token %}
+					<h2 id="delete-h2">¿Esta seguro que desea eliminar la cuenta de "{{usuario}}?"</h2>
+		
+					<div class="container-input">
+						<div>
+							<input id="button" type="submit" value="Eliminar Usuario">
+						</div>
+					</div>
+
+				</form>
+
+				<div class="img" id="img" style="text-align: center">
+					<img src="{% static 'index/images/att.png'%}" >
+				</div>
+        </div>
+
+		<!-- Sweet Alert -->
+		<script src="{%static 'sweetAlert/sweetalert2.all.min.js'%}"></script>
+		{% if messages %}
 			{%for m in messages%}
-				{% if m.tags == 'error' %}
+				{% if m.tags == 'success' %}
 					<script>
 						Swal.fire({
-							icon: 'error',
-							title: '😢 No eres administrador! 😢',
+							icon: 'success',
+							title: '😎 Usuario Eliminado! 😎',
 							text: '{{m}}'
 						})
 					</script>
@@ -77,11 +93,4 @@
 		{% endif %}
 
     </body>
-
-	<footer>
-		<div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" 
-		style="height: 100%; width: 100%;"><path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" 
-		style="stroke: none; fill: #16222A;"></path></svg></div>
-
-	</footer>
 </html>
