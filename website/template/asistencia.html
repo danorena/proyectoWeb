@@ -69,7 +69,7 @@
 		<form method="POST" id="asistencia-form">
 			{% csrf_token %}
 			<div class="selectFicha">
-			<select class="select2" style="width: 50%" name="state" id="state">
+			<select class="select2" style="width: 50%" name="state" id="state" required>
 				<option value="" class="optionF" id="optionD">Seleccione una ficha</option>
 					<!-- Iteramos las fichas -->
 					{% for ficha in fichas %}
@@ -83,6 +83,8 @@
 			</div>
 
 		</form>
+
+		<div id="ohsnap"></div>
 
     </body>
 
@@ -99,12 +101,3 @@
 	<script src="{%static 'asistencia/vendor/ohsnap/ohsnap.js'%}"></script>
 
 </html>
-
-<!-- Script para aplicar select2 a nuestro select-option -->
-<script> 
-	$(document).ready(function() {
-	    $('.select2').select2({
-			theme: "classic"
-		});
-	});
-</script>

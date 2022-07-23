@@ -17,14 +17,20 @@ function validate(e){
         date.style.borderColor="red";
         ohSnap('Ingresar la fecha', {color: 'red'});  // alert will have class 'alert-color'
         lVali = false;
+    }else{ 
+        //Le quita el borde si hay algo en la variable
+        date.style.borderColor=""; 
     }
+
     // Verifica que no este vacio, si no el lVali es false
     if (select.value==""){
         select.style.borderColor="red";
-        ohSnap('Ingresar la fecha', {color: 'red'});  // alert will have class 'alert-color'
+        ohSnap('Ingresar la ficha', {color: 'red'});  // alert will have class 'alert-color'
         lVali = false;
+    }else{ 
+        //Le quita el borde si hay algo en la variable
+        select.style.borderColor=""; 
     }
-
     // Si el lVali es verdadero entonces deja mandar, si no es porq falta algun dato
     if(lVali){
         form.submit();

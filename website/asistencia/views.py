@@ -4,7 +4,7 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('b60lkhh7i47obofeagt8-mysql.services.clever-cloud.com','uempkk9vesxwg5af','dRzWyHluiDPzEZt68igL','b60lkhh7i47obofeagt8')
+conn = Conexion('localhost','root','','usuarios')
 # Create your views here.
 def asistenciaCall(request):
     #Creamos cursor
@@ -26,8 +26,6 @@ def asistenciaCall(request):
                 # Obtiene ficha
                 if key == 'ficha':
                     ficha = value
-            # fecha = '2022-05-11'
-            # ficha = '01'
             asistencia = Asistencia(ficha,date)
             asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))
             return render(request,'asistenciaFicha.html')

@@ -19,6 +19,9 @@
  *    fade-duration: duration of the fade in/out of the alerts. Default 'fast'
 */
 function ohSnap(text, options) {
+
+    console.log('OhSnap')
+
     var defaultOptions = {
       'color'       : null,     // color is  CSS class `alert-color`
       'icon'        : null,     // class of the icon to show before the alert text
@@ -65,6 +68,7 @@ function ohSnap(text, options) {
    *    options:
    *      duration: duration of the alert fade out - 'fast', 'slow' or time in ms. Default 'fast'
    */
+
   function ohSnapX(element, options) {
       defaultOptions = {
         'duration': 'fast'
