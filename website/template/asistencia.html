@@ -79,10 +79,14 @@
 		  	</select>
 			  	<input type="hidden" name="ficha" id="ficha">
 		  		<input type="date" name="date" id="date">
-		  		<button type="submit" onclick="validate(event)">Enviar</button>
+			</div>
+			<div class="button-div">
+				<button id="button" type="submit" onclick="validate(event)">Enviar</button>
 			</div>
 
 		</form>
+
+		<div id="ohsnap"></div>
 
     </body>
 
@@ -99,12 +103,3 @@
 	<script src="{%static 'asistencia/vendor/ohsnap/ohsnap.js'%}"></script>
 
 </html>
-
-<!-- Script para aplicar select2 a nuestro select-option -->
-<script> 
-	$(document).ready(function() {
-	    $('.select2').select2({
-			theme: "classic"
-		});
-	});
-</script>
