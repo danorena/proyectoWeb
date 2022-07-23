@@ -18,55 +18,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `usuarios`
+-- Base de datos: `b60lkhh7i47obofeagt8`
 --
-CREATE DATABASE IF NOT EXISTS `usuarios` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `usuarios`;
+CREATE DATABASE IF NOT EXISTS `b60lkhh7i47obofeagt8` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `b60lkhh7i47obofeagt8`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
 DROP PROCEDURE IF EXISTS `spDeleteUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUser` (IN `_idUser` INT(3))   DELETE FROM `tableuser` WHERE (`idUser`) = `_idUser`$$
+CREATE PROCEDURE `spDeleteUser` (IN `_idUser` INT(3))   DELETE FROM `tableuser` WHERE (`idUser`) = `_idUser`$$
 
 DROP PROCEDURE IF EXISTS `spInsertUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150), IN `_rol` INT)   BEGIN
+CREATE PROCEDURE `spInsertUser` (IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150), IN `_rol` INT)   BEGIN
 
 INSERT INTO tableuser (`email`,`user`,`pass`,rol) VALUES (`_email`,`_user`,`_pass`,`_rol`);
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spLogin`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `_user` VARCHAR(150), IN `_pass` VARCHAR(150))   BEGIN
+CREATE PROCEDURE `spLogin` (IN `_user` VARCHAR(150), IN `_pass` VARCHAR(150))   BEGIN
 
 SELECT * FROM tableuser WHERE `user` = _user AND `pass` = _pass;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchIdUserS`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchIdUserS` ()   BEGIN
+CREATE PROCEDURE `spSearchIdUserS` ()   BEGIN
 
 SELECT idUserS FROM session WHERE idSession = 1;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchInfo`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchInfo` (IN `_USER` VARCHAR(150), IN `_PASS` VARCHAR(150))   BEGIN
+CREATE PROCEDURE `spSearchInfo` (IN `_USER` VARCHAR(150), IN `_PASS` VARCHAR(150))   BEGIN
 
 SELECT idUser,rol,user from tableuser WHERE user =  _USER AND pass = _PASS; 
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSession`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSession` ()   BEGIN
+CREATE PROCEDURE `spSession` ()   BEGIN
 
 SELECT session,rolSession,userSession,idUserS FROM session WHERE idSession = 1;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateInfoSession`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateInfoSession` (IN `_IDUSER` INT, IN `_ROLUSER` INT, IN `_USER` VARCHAR(150))   BEGIN
+CREATE PROCEDURE `spUpdateInfoSession` (IN `_IDUSER` INT, IN `_ROLUSER` INT, IN `_USER` VARCHAR(150))   BEGIN
 
 UPDATE session
 SET idUserS = _IDUSER,
@@ -75,7 +75,7 @@ SET idUserS = _IDUSER,
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateSession`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateSession` (IN `_SESSION` VARCHAR(100))   BEGIN
+CREATE PROCEDURE `spUpdateSession` (IN `_SESSION` VARCHAR(100))   BEGIN
 
 UPDATE session
 SET session = _SESSION
@@ -84,7 +84,7 @@ WHERE idSession = 1;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUser` (IN `_idUser` INT(5), IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))   BEGIN
+CREATE PROCEDURE `spUpdateUser` (IN `_idUser` INT(5), IN `_email` VARCHAR(150), IN `_user` VARCHAR(100), IN `_pass` VARCHAR(150))   BEGIN
 UPDATE `tableuser` SET 
 `email`=`_email`,
 `user`=`_user`,
