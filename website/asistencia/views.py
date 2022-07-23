@@ -14,7 +14,6 @@ def asistenciaCall(request):
     a = f"CALL `spSession`();"
     cursor.execute(a)
     session = cursor.fetchone()
-    print (session[0])
     #Si la sesion esta activa realizamos el resto de la funcion
     if session[0] == 'True':
         from .Asistencia import Asistencia
