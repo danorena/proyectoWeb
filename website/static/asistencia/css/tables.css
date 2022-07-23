@@ -26,6 +26,7 @@ body{
     margin: 10px;
     width: auto;
     background-color: #4ca8af;
+    border-radius: 50px;
 }
 
 #button{

@@ -69,7 +69,7 @@
 		<form method="POST" id="asistencia-form">
 			{% csrf_token %}
 			<div class="selectFicha">
-			<select class="select2" style="width: 50%" name="state" id="state" required>
+			<select class="select2" style="width: 50%" name="state" id="state">
 				<option value="" class="optionF" id="optionD">Seleccione una ficha</option>
 					<!-- Iteramos las fichas -->
 					{% for ficha in fichas %}
@@ -79,7 +79,9 @@
 		  	</select>
 			  	<input type="hidden" name="ficha" id="ficha">
 		  		<input type="date" name="date" id="date">
-		  		<button type="submit" onclick="validate(event)">Enviar</button>
+			</div>
+			<div class="button-div">
+				<button id="button" type="submit" onclick="validate(event)">Enviar</button>
 			</div>
 
 		</form>

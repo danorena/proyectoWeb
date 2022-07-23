@@ -6,10 +6,6 @@
   padding:0;
 }
 
-.select-false{
-  background: red;
-}
-
 header{
   font-size: 13px;
 }
@@ -22,15 +18,58 @@ header{
 }
 
 .selectFicha{
-  height: 40vh;
+  margin-top: 15vh;
+  margin-bottom: 30px;
   display:flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
+select{
+  font-size: 20px;
+  border: 0;
+  box-shadow: 0 5px 15px rgb(43, 43, 43);
+  padding: 5px;
+  background: #16222A;
+  color: white;
+}
+
+select:hover{ 
+  background-color: white; 
+  color: #16222A;
+}
+
+#date{
+  font-size: 15px;
+  border: 0;
+  box-shadow: 0 5px 15px rgb(43, 43, 43);
+  padding: 3px;
+  background: #16222A;
+  color: white;
+}
+
+#date:hover{ 
+  background-color: white; 
+  color: #16222A;
+}
+
+#button { 
+  width: 100px;
+  background-color: #4ca8af;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 50px;
+}
+
+.button-div{
+  text-align: center;
+}
+
 .selectFicha input{
   margin-left: 50px;
-  margin-right: 5px;
 }
 
