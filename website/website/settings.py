@@ -85,17 +85,17 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         # Maquina o gestor de la db
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.pg2',
         # Nombre DB
-        'NAME': 'usuarios',
+        'NAME': 'd9amn3irclf9m4',
         # Usuario de la db
-        'USER' : 'root',
+        'USER' : 'uewtdsvwheyudj',
         # Pw de la db
-        'PASSWORD' : '',
+        'PASSWORD' : '3fd0c763e305f8bc49923c281f6ddbb31688e2fe82babd593f944ef64b00dd48',
         # Host, comunmente es localhost
-        'HOST' : 'localhost',
+        'HOST' : 'ec2-34-235-198-25.compute-1.amazonaws.com',
         # Puerto para acceder a la db
-        'PORT' : '3306',
+        'PORT' : '5432',
     }
 }
 
