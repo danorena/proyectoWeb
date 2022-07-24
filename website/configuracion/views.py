@@ -15,9 +15,10 @@ def configuracionCall(request):
     cursor.execute(a)
     session = cursor.fetchone()
     #Almacenamos datos que retorna el procedimiento en variables
-    id = session[0]
+    id = session[3]
     userS = session[2]
     db.close()
+    print("id actual: ",id)
     #Si la sesion esta activa ejecutaremos el resto de la funcion
     if session[0] == 'True':
         if request.method == 'POST':
