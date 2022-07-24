@@ -82,20 +82,37 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         # Maquina o gestor de la db
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # Nombre DB
+#         'NAME': 'd9amn3irclf9m4',
+#         # Usuario de la db
+#         'USER' : 'uewtdsvwheyudj',
+#         # Pw de la db
+#         'PASSWORD' : '3fd0c763e305f8bc49923c281f6ddbb31688e2fe82babd593f944ef64b00dd48',
+#         # Host, comunmente es localhost
+#         'HOST' : 'ec2-34-235-198-25.compute-1.amazonaws.com',
+#         # Puerto para acceder a la db
+#         'PORT' : '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         # Maquina o gestor de la db
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         # Nombre DB
-        'NAME': 'd9amn3irclf9m4',
+        'NAME': 'usuarios',
         # Usuario de la db
-        'USER' : 'uewtdsvwheyudj',
+        'USER' : 'root',
         # Pw de la db
-        'PASSWORD' : '3fd0c763e305f8bc49923c281f6ddbb31688e2fe82babd593f944ef64b00dd48',
+        'PASSWORD' : '',
         # Host, comunmente es localhost
-        'HOST' : 'ec2-34-235-198-25.compute-1.amazonaws.com',
+        'HOST' : 'localhost',
         # Puerto para acceder a la db
-        'PORT' : '5432',
+        'PORT' : '3306',
     }
 }
 
