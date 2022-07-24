@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         # Maquina o gestor de la db
-        'ENGINE': 'django.db.backends.pg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         # Nombre DB
         'NAME': 'd9amn3irclf9m4',
         # Usuario de la db
