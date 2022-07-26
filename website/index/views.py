@@ -5,7 +5,8 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('localhost','root','','b60lkhh7i47obofeagt8')
+
 def indexCall(request):
     #Creamos cursor
     db = conn.dbConexion()

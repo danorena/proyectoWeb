@@ -104,7 +104,7 @@ DATABASES = {
         # Maquina o gestor de la db
         'ENGINE': 'django.db.backends.mysql',
         # Nombre DB
-        'NAME': 'usuarios',
+        'NAME': 'b60lkhh7i47obofeagt8',
         # Usuario de la db
         'USER' : 'root',
         # Pw de la db

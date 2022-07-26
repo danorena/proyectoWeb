@@ -4,7 +4,8 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('localhost','root','','b60lkhh7i47obofeagt8')
+
 # Create your views here.
 def asistenciaCall(request):
     #Creamos cursor
