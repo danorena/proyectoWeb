@@ -9,6 +9,7 @@ conn = Conexion('localhost',
                 '',
                 'usuarios')
 
+
 def configuracionCall(request):
     #Creamos cursor
     db = conn.dbConexion()
