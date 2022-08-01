@@ -2,6 +2,8 @@
 # instalar openpyx
 from distutils.text_file import TextFile
 
+from asistencia.ruta import rutaDescarga
+
 
 class Asistencia:
     # Constructor 
@@ -18,11 +20,20 @@ class Asistencia:
         # Importamos la libreria de pandas
         import pandas as pd
         
-        
         # Leemos el archivo .Json
-        fileJson = pd.read_json(f"{self.ruta}/{ficha}/database/attendance.json")
-        
+        # libreria pygithub
+        import json
+        from github import Github
 
+        g = Github("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")
+        repo = g.get_repo("danorena/attendance")
+        contents = repo.get_contents(f"attendance/model/datasets/attendance_system_dataset/{ficha}/database/attendance.json")
+        fileJson = contents.decoded_content.decode()
+        fileJson = json.loads(fileJson)
+        fileJson = pd.DataFrame(fileJson)
+        fileJson = pd.DataFrame.to_json(fileJson)
+        fileJson = pd.read_json(fileJson)
+        
         # Inicializamos una variable en 0 para el contador y una lista vacia
         a = 0
         aprendiz = []
@@ -77,7 +88,6 @@ class Asistencia:
         print(f'Fecha: {self.fecha}')
         return dataFrame
 
-    # Funcion para convertir el dataFrame a Excel
     def toExcel(self,dataFrame):
         try:
             dataFrame.to_excel(f'{self.rutaDescarga}/website/static/asistencia/excel/asistenciaFicha.xlsx')
@@ -137,5 +147,5 @@ class Asistencia:
 # asistencia = Asistencia(ficha,fecha)
 
 # asistencia.toExcel(asistencia.dataFrameAsistencia(ficha))
-# # print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(ficha)))
+# print(asistencia.mostrarAsistencia(asistencia.dataFrameAsistencia(ficha)))
 # asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))

@@ -4,7 +4,11 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('localhost',
+                'root',
+                '',
+                'usuarios')
+
 # Create your views here.
 def asistenciaCall(request):
     #Creamos cursor
@@ -26,9 +30,12 @@ def asistenciaCall(request):
                 # Obtiene ficha
                 if key == 'ficha':
                     ficha = value
-            asistencia = Asistencia(ficha,date)
-            asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))
-            return render(request,'asistenciaFicha.html')
+            try:
+                asistencia = Asistencia(ficha,date)
+                asistencia.toHtml(asistencia.dataFrameAsistencia(ficha))
+                return render(request,'asistenciaFicha.html')
+            except:
+                return render(request,'error.html')
         fichas = dir()
         return render(request,'asistencia.html',{'fichas' : fichas})
     else:

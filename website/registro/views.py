@@ -6,7 +6,11 @@ from login.views import callLogin
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('localhost',
+                'root',
+                '',
+                'usuarios')
+                
 def callRegister(request):
     #Creamos cursor
     db = conn.dbConexion()

@@ -6,7 +6,10 @@ from website.conexion import Conexion
 
 # Create your views here.
 
-conn = Conexion('localhost','root','','usuarios')
+conn = Conexion('localhost',
+                'root',
+                '',
+                'usuarios')
 
 def callLogin(request):
     if request.method == 'POST':

@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         # Maquina o gestor de la db
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.mysql',
 #         # Nombre DB
 #         'NAME': 'd9amn3irclf9m4',
 #         # Usuario de la db
@@ -158,3 +158,7 @@ STATICFILES_DIRS = ['static/']
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
